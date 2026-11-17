@@ -60,11 +60,11 @@ BEGIN
     BEGIN
         BLOCK "040904b0"
         BEGIN
-            VALUE "CompanyName", "SereinGram contributors"
-            VALUE "FileDescription", "SereinGram"
+            VALUE "CompanyName", "VeyroGram contributors"
+            VALUE "FileDescription", "VeyroGram"
             VALUE "FileVersion", "7.4.1.0"
             VALUE "LegalCopyright", "Copyright (C) 2014-2026"
-            VALUE "ProductName", "SereinGram"
+            VALUE "ProductName", "VeyroGram"
             VALUE "ProductVersion", "7.4.1.0"
         END
     END

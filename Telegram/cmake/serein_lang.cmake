@@ -1,4 +1,4 @@
-# SereinGram: the SereinGram strings join the generated language keys, and
+# VeyroGram: the VeyroGram strings join the generated language keys, and
 # the generated key lookup is compiled as one function per key letter
 # because MSVC for arm64 rejects the single function as too large.
 

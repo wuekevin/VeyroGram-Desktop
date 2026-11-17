@@ -1,8 +1,8 @@
-#define MyAppShortName "SereinGram"
-#define MyAppName "SereinGram"
-#define MyAppPublisher "SereinGram contributors"
-#define MyAppURL "https://github.com/eltavine/SereinGram"
-#define MyAppExeName "SereinGram.exe"
+#define MyAppShortName "VeyroGram"
+#define MyAppName "VeyroGram"
+#define MyAppPublisher "VeyroGram contributors"
+#define MyAppURL "https://github.com/wuekevin/VeyroGram-Desktop"
+#define MyAppExeName "VeyroGram.exe"
 #define MyAppId "7BDAE480-498A-409E-816D-B1EE06F99A03"
 #define CurrentYear GetDateTimeString('yyyy','','')
 
@@ -24,7 +24,7 @@ AllowNoIcons=yes
 OutputDir={#ReleasePath}
 SetupIconFile={#SourcePath}..\Resources\art\icon256.ico
 UninstallDisplayName={#MyAppName}
-UninstallDisplayIcon={app}\SereinGram.exe
+UninstallDisplayIcon={app}\VeyroGram.exe
 Compression=lzma
 SolidCompression=yes
 DisableStartupPrompt=yes
@@ -80,7 +80,7 @@ Name: "ua";      MessagesFile: "compiler:Languages\Ukrainian.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"
 
 [Files]
-Source: "{#ReleasePath}\SereinGram.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#ReleasePath}\VeyroGram.exe"; DestDir: "{app}"; Flags: ignoreversion
 #if MyBuildTarget != "winarm" && FileExists(ReleasePath + "\" + ModulesFolder + "\d3d\d3dcompiler_47.dll")
 Source: "{#ReleasePath}\{#ModulesFolder}\d3d\d3dcompiler_47.dll"; DestDir: "{app}\{#ModulesFolder}\d3d"; Flags: ignoreversion
 #endif
