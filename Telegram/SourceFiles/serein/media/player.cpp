@@ -102,7 +102,7 @@ void PlayerBox(
 			return;
 		}
 		const auto file = std::make_shared<QTemporaryFile>(
-			QDir::temp().filePath(u"SereinGram-cover-XXXXXX.png"_q));
+			QDir::temp().filePath(u"VeyroGram-cover-XXXXXX.png"_q));
 		if (file->open() && state->image.save(file.get(), "PNG") && file->flush()) {
 			file->close();
 			if (QDesktopServices::openUrl(QUrl::fromLocalFile(file->fileName()))) {

@@ -1359,7 +1359,7 @@ bool Application::openInternalUrl(const QString &url, QVariant context) {
 }
 
 QString Application::changelogLink() const {
-	return u"https://github.com/eltavine/SereinGram/releases"_q;
+	return u"https://github.com/wuekevin/VeyroGram-Desktop/releases"_q;
 }
 
 bool Application::openCustomUrl(

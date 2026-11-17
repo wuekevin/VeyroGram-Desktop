@@ -24,7 +24,7 @@ public:
 		CFDictionarySetValue(
 			_value,
 			kSecAttrService,
-			CFSTR("SereinGram Services"));
+			CFSTR("VeyroGram Services"));
 		CFDictionarySetValue(_value, kSecAttrAccount, key);
 		CFDictionarySetValue(
 			_value,

@@ -51,13 +51,13 @@ TEST_CASE("UpdateManifest") {
 			return asset ? asset->name : QString();
 		};
 		CHECK(name("macos", "arm64", "disk-image")
-			== u"SereinGram-macos-arm64.dmg"_q);
+			== u"VeyroGram-macos-arm64.dmg"_q);
 		CHECK(name("macos", "x86_64", "disk-image")
-			== u"SereinGram-macos-universal.dmg"_q);
+			== u"VeyroGram-macos-universal.dmg"_q);
 		CHECK(name("windows", "x86_64", "installer")
-			== u"SereinGram-windows-x86_64-setup.exe"_q);
+			== u"VeyroGram-windows-x86_64-setup.exe"_q);
 		CHECK(name("linux", "x86_64", "appimage")
-			== u"SereinGram-linux-x86_64.AppImage"_q);
+			== u"VeyroGram-linux-x86_64.AppImage"_q);
 		CHECK(name("windows", "arm64", "installer").isEmpty());
 		CHECK(name("linux", "x86_64", "deb").isEmpty());
 	}
@@ -83,9 +83,9 @@ TEST_CASE("UpdateManifest") {
 			return manifest && manifest->assets.empty();
 		};
 		CHECK(!dropped(u"os"_q, u"windows"_q));
-		CHECK(dropped(u"url"_q, u"https://example.com/SereinGram-a.exe"_q));
-		CHECK(dropped(u"url"_q, u"http://github.com/o/r/SereinGram-a.exe"_q));
-		CHECK(dropped(u"name"_q, u"SereinGram-other.exe"_q));
+		CHECK(dropped(u"url"_q, u"https://example.com/VeyroGram-a.exe"_q));
+		CHECK(dropped(u"url"_q, u"http://github.com/o/r/VeyroGram-a.exe"_q));
+		CHECK(dropped(u"name"_q, u"VeyroGram-other.exe"_q));
 		CHECK(dropped(u"sha256"_q, u"abc"_q));
 		CHECK(dropped(u"size"_q, 0));
 		CHECK(dropped(u"kind"_q, u"Installer"_q));

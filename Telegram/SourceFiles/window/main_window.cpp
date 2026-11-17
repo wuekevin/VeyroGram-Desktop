@@ -897,7 +897,7 @@ void MainWindow::updateTitle() {
 
 	const auto suffix = nativeTitleSuffix();
 	if (Serein::Hooks::Privacy::DemoMode()) {
-		setTitle(u"SereinGram"_q + suffix);
+		setTitle(u"VeyroGram"_q + suffix);
 		return;
 	}
 	const auto settings = Core::App().settings().windowTitleContent();
@@ -924,7 +924,7 @@ void MainWindow::updateTitle() {
 		: Dialogs::Key();
 	const auto thread = key ? key.thread() : nullptr;
 	if (!thread) {
-		setTitle((user.isEmpty() ? u"SereinGram"_q : user) + added + suffix);
+		setTitle((user.isEmpty() ? u"VeyroGram"_q : user) + added + suffix);
 		return;
 	}
 	const auto history = thread->owningHistory();

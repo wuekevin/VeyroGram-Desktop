@@ -195,7 +195,7 @@ void AddAbout(SectionBuilder &builder) {
 	AddRow(builder, {
 		.title = tr::lng_serein_source_code(),
 		.onClick = [] {
-			UrlClickHandler::Open(u"https://github.com/eltavine/SereinGram"_q);
+			UrlClickHandler::Open(u"https://github.com/wuekevin/VeyroGram-Desktop"_q);
 		},
 		.visual = {
 			.icon = &st::menuIconLink,

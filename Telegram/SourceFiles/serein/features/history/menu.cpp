@@ -52,7 +52,7 @@ void InsertAction(
 		return false;
 	}
 	const auto bytes = CachedMediaBytes(session, record);
-	const auto folder = QDir::temp().filePath(u"SereinGram"_q);
+	const auto folder = QDir::temp().filePath(u"VeyroGram"_q);
 	const auto path = QDir(folder).filePath(name);
 	auto file = QFile(path);
 	if (!bytes

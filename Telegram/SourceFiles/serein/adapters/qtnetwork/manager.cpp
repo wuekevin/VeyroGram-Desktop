@@ -21,7 +21,7 @@ QNetworkReply *Download(
 		const DownloadRequest &request,
 		Fn<void(std::optional<QByteArray> body)> done) {
 	auto network = QNetworkRequest(request.url);
-	network.setRawHeader("User-Agent", "SereinGram");
+	network.setRawHeader("User-Agent", "VeyroGram");
 	for (const auto &[name, value] : request.headers) {
 		network.setRawHeader(name, value);
 	}

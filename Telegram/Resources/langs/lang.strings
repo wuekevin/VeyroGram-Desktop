@@ -414,7 +414,7 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 "lng_photo_caption" = "Caption";
 "lng_photos_comment" = "Comment";
 
-"lng_intro_qr_title" = "Scan From Mobile Telegram";
+"lng_intro_qr_title" = "Scan to Log In";
 "lng_intro_qr_step1" = "Open Telegram on your phone";
 "lng_intro_qr_step2" = "Go to Settings > Devices > Link Desktop Device";
 "lng_intro_qr_step3" = "Scan this image to Log In";

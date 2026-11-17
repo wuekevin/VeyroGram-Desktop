@@ -1723,7 +1723,7 @@ void NativeManager::doShowNotification(NotificationFields &&fields) {
 		: (scheduled && peer->isSelf())
 		? tr::lng_notification_reminder(tr::now)
 		: subWithChat();
-	const auto fullTitle = demo ? u"SereinGram"_q : addTargetAccountName(title, &peer->session());
+	const auto fullTitle = demo ? u"VeyroGram"_q : addTargetAccountName(title, &peer->session());
 	const auto hideReactionSender = reactionFrom
 		&& !peer->session().api().reactionsNotifySettings()
 			.showPreviewsCurrent();

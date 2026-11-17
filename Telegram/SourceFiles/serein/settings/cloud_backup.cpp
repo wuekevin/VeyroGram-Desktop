@@ -26,7 +26,7 @@ namespace {
 constexpr auto kSearchLimit = 20;
 constexpr auto kMaximumBackupBytes = 8 * 1024 * 1024;
 constexpr auto kFileName = "sereingram-settings.json";
-constexpr auto kTag = "#SereinGramSettings";
+constexpr auto kTag = "#VeyroGramSettings";
 
 [[nodiscard]] DocumentData *FindBackup(
 		not_null<Main::Session*> session,
