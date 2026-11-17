@@ -1,4 +1,5 @@
 #include "serein/settings/home.h"
+#include "veyrogram/vg_settings.h"
 #include "serein/hooks/settings/about.h"
 #include "serein/settings/interface.h"
 #include "serein/settings/licenses.h"
@@ -258,6 +259,7 @@ Settings::Type HomeId() {
 }
 
 void AddSettingsEntry(SectionBuilder &builder) {
+	VeyroGram::AddSettingsEntry(builder);
 	builder.addSectionButton({
 		.title = tr::lng_serein_settings(),
 		.targetSection = Home::Id(),
