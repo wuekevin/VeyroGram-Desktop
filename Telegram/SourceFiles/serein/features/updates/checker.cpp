@@ -27,7 +27,7 @@ constexpr auto kCheckInterval = 24 * 60 * 60 * 1000;
 constexpr auto kRequestTimeout = 30 * 1000;
 constexpr auto kToastDuration = crl::time(12000);
 constexpr auto kMaximumResponse = qint64(256 * 1024);
-constexpr auto kReleases = "https://github.com/eltavine/SereinGram/releases/";
+constexpr auto kReleases = "https://github.com/wuekevin/VeyroGram-Desktop/releases/";
 
 [[nodiscard]] bool FollowsNightly() {
 	return (std::string_view(kBuildChannel) == "nightly")

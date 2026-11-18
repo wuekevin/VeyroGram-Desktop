@@ -1,6 +1,6 @@
 # Patched forks and copied source trees
 
-Treat a fork as three distinct states: the revision pinned by Telegram Desktop,
+Treat a fork as three distinct states: the revision pinned by VeyroGram Desktop,
 the fork's current upstream branch, and the original project's upstream. New
 commits in the fork can be a simple pin update; importing the original upstream
 can require preserving a large patch set. Report these separately.

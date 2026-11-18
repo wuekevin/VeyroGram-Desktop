@@ -1,1 +1,1 @@
-> **SereinGram does not yet have developer API credentials configured.** This Nightly is built with Telegram Desktop’s public test credentials, so login may be limited or fail. A new Nightly will be published automatically once credentials are configured.
+> **SereinGram does not yet have developer API credentials configured.** This Nightly is built with VeyroGram Desktop’s public test credentials, so login may be limited or fail. A new Nightly will be published automatically once credentials are configured.

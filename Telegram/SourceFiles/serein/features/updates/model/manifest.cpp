@@ -38,7 +38,7 @@ constexpr auto kMaxAssets = 64;
 		.sha256 = object.value(u"sha256"_q).toString(),
 		.size = int64(object.value(u"size"_q).toDouble()),
 	};
-	if (!Matches(result.name, "\\ASereinGram-[A-Za-z0-9._-]{1,96}\\z")
+	if (!Matches(result.name, "\\AVeyroGram-[A-Za-z0-9._-]{1,96}\\z")
 		|| !Token(result.os)
 		|| !Token(result.arch)
 		|| !Token(result.kind)

@@ -248,7 +248,7 @@ QString psAppDataPath() {
 	if (GetEnvironmentVariable(L"APPDATA", wstrPath, maxFileLen)) {
 		QDir appData(QString::fromStdWString(std::wstring(wstrPath)));
 #ifdef OS_WIN_STORE
-		return appData.absolutePath() + u"/SereinGram UWP/"_q;
+		return appData.absolutePath() + u"/VeyroGram UWP/"_q;
 #else // OS_WIN_STORE
 		return appData.absolutePath() + '/' + AppName.utf16() + '/';
 #endif // OS_WIN_STORE
@@ -329,10 +329,10 @@ void psDoFixPrevious() {
 		HRESULT userDesktopRes = SHGetFolderPath(0, CSIDL_DESKTOPDIRECTORY, 0, SHGFP_TYPE_CURRENT, userDesktopFolder);
 		HRESULT commonDesktopRes = SHGetFolderPath(0, CSIDL_COMMON_DESKTOPDIRECTORY, 0, SHGFP_TYPE_CURRENT, commonDesktopFolder);
 		if (SUCCEEDED(userDesktopRes)) {
-			userDesktopLnk = QString::fromWCharArray(userDesktopFolder) + "\\SereinGram.lnk";
+			userDesktopLnk = QString::fromWCharArray(userDesktopFolder) + "\\VeyroGram.lnk";
 		}
 		if (SUCCEEDED(commonDesktopRes)) {
-			commonDesktopLnk = QString::fromWCharArray(commonDesktopFolder) + "\\SereinGram.lnk";
+			commonDesktopLnk = QString::fromWCharArray(commonDesktopFolder) + "\\VeyroGram.lnk";
 		}
 		QFile userDesktopFile(userDesktopLnk), commonDesktopFile(commonDesktopLnk);
 		if (QFile::exists(userDesktopLnk) && QFile::exists(commonDesktopLnk) && userDesktopLnk != commonDesktopLnk) {

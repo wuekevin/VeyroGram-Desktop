@@ -29,7 +29,7 @@ namespace {
 		? u"STCharacters.txt"_q
 		: u"TSCharacters.txt"_q;
 	return QJsonDocument(QJsonObject{
-		{ u"name"_q, u"SereinGram"_q },
+		{ u"name"_q, u"VeyroGram"_q },
 		{ u"segmentation"_q, QJsonObject{
 			{ u"type"_q, u"mmseg"_q },
 			{ u"dict"_q, TextDictionary(phrases) },

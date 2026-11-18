@@ -1,6 +1,6 @@
 ---
 name: dependency-watch
-description: Audit Telegram Desktop dependencies on freshly fetched origin/dev for releases and security fixes, including upstream lag and backport candidates in patched forks. Use for the scheduled dependency monitor or an explicitly requested dependency report.
+description: Audit VeyroGram Desktop dependencies on freshly fetched origin/dev for releases and security fixes, including upstream lag and backport candidates in patched forks. Use for the scheduled dependency monitor or an explicitly requested dependency report.
 ---
 
 # Dependency watch

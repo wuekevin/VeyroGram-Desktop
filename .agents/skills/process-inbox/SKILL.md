@@ -1,6 +1,6 @@
 ---
 name: process-inbox
-description: Process the local ignored ai-tdesktop inbox into durable, independently testable Telegram Desktop task records while task execution worktrees remain active. Use when the user invokes $process-inbox or /process-inbox, asks to triage or process ai-tdesktop/inbox/inbox.md, or wants inbox notes, pasted images, or supplied videos routed into new or existing AI projects and dated tasks without implementing them.
+description: Process the local ignored ai-tdesktop inbox into durable, independently testable VeyroGram Desktop task records while task execution worktrees remain active. Use when the user invokes $process-inbox or /process-inbox, asks to triage or process ai-tdesktop/inbox/inbox.md, or wants inbox notes, pasted images, or supplied videos routed into new or existing AI projects and dated tasks without implementing them.
 ---
 
 # Process Inbox
@@ -16,7 +16,7 @@ plan only: do not edit Telegram source, build, test, claim, or implement tasks.
 
 ## Workspace
 
-Run from a Telegram Desktop checkout. Use the bundled helper with an available
+Run from a VeyroGram Desktop checkout. Use the bundled helper with an available
 Python 3 interpreter:
 
 ```bash

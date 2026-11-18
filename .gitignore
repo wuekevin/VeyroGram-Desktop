@@ -77,3 +77,4 @@ settings.local.json
 
 # Serein local API credentials
 /Telegram/build/api_credentials.local.cmake
+*.vg-bak

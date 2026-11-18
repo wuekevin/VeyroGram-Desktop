@@ -2,7 +2,7 @@
 
 本表是 SereinGram 功能状态的唯一来源，状态与优先级定义见 [产品规格](README.md#3-标识与状态)。
 
-来源缩写：`Ni` Nagram iOS · `Na` Nagram Android（含 NekoX／Nekogram 继承项）· `Ad` AyuGram Desktop · `Aa` AyuGram Android · `Sw` Swiftgram · `T` Telegram Desktop 已有 · `D` 桌面补充。
+来源缩写：`Ni` Nagram iOS · `Na` Nagram Android（含 NekoX／Nekogram 继承项）· `Ad` AyuGram Desktop · `Aa` AyuGram Android · `Sw` Swiftgram · `T` VeyroGram Desktop 已有 · `D` 桌面补充。
 
 部分功能继承自 Nagram-qt，代码与核心测试已完成但多数缺少现场验收，统一记为 `Implemented`。
 
@@ -40,7 +40,7 @@ Nagram 的品牌政策要求分支使用不同品牌并替换 Nagram 名称与�
 | SG-BRAND-04 | 源码、发布与问题反馈链接指向 `eltavine/SereinGram` | D | Implemented | P0 |
 | SG-BRAND-05 | 代码更名：`nagram` → `serein`（目录、命名空间、文案键、存储键、CMake、测试目标、工作流） | D | Implemented | P0 |
 | SG-BRAND-06 | 第三方许可声明（SereinGram 设置首页“第三方许可”：列出随程序分发的 OpenCC、marisa-trie、darts-clone、RapidJSON、quirc 与注册日期数据的名称、许可与地址，许可全文作为 Qt 资源打包，可在程序内查看；文本直接取自子模块中的许可文件，RapidJSON 的子集不含许可文件，以其头文件中的版权声明补齐 MIT 文本；关于页左下角也可打开） | D | Implemented | P1 |
-| SG-BRAND-07 | 关于页与声明（主菜单“关于”、macOS 应用菜单与 SereinGram 设置首页“关于 SereinGram”打开同一窗口：顶部沿用设置首页封面的图标、名称、版本与更新状态；“声明”依次说明非官方客户端、只是借鉴 Nagram 与 AyuGram 且与其作者及维护者没有任何关联、服务条款与账号风险、尊重他人、无担保、名称与商标；“隐私”说明不做追踪、所选外部服务与本机数据；“开源”给出 GPLv3 许可、源代码、版权、致谢（Telegram Desktop、代码库最初分支自 Nagram-qt、图标设计者）与帮助渠道；条目复用上游 `Ui::MakeFeatureListEntry`，上游 `AboutBox` 只剩一行转发到 `serein/settings/about.cpp`） | D | Implemented | P1 |
+| SG-BRAND-07 | 关于页与声明（主菜单“关于”、macOS 应用菜单与 SereinGram 设置首页“关于 SereinGram”打开同一窗口：顶部沿用设置首页封面的图标、名称、版本与更新状态；“声明”依次说明非官方客户端、只是借鉴 Nagram 与 AyuGram 且与其作者及维护者没有任何关联、服务条款与账号风险、尊重他人、无担保、名称与商标；“隐私”说明不做追踪、所选外部服务与本机数据；“开源”给出 GPLv3 许可、源代码、版权、致谢（VeyroGram Desktop、代码库最初分支自 Nagram-qt、图标设计者）与帮助渠道；条目复用上游 `Ui::MakeFeatureListEntry`，上游 `AboutBox` 只剩一行转发到 `serein/settings/about.cpp`） | D | Implemented | P1 |
 
 ## CORE 基础设施
 

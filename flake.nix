@@ -1,9 +1,9 @@
 {
-  description = "SereinGram, an open-source Telegram client based on Telegram Desktop";
+  description = "SereinGram, an open-source Telegram client based on VeyroGram Desktop";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # Telegram Desktop builds from its submodules.
+    # VeyroGram Desktop builds from its submodules.
     self.submodules = true;
   };
 

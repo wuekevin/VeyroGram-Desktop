@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       ref:
-        description: Telegram Desktop tag or branch to merge.
+        description: VeyroGram Desktop tag or branch to merge.
         default: dev
 
 concurrency:
@@ -19,7 +19,7 @@ permissions:
 jobs:
 
   sync:
-    name: Sync Telegram Desktop
+    name: Sync VeyroGram Desktop
     runs-on: ubuntu-24.04
     permissions:
       contents: write
@@ -88,14 +88,14 @@ jobs:
             "HEAD:refs/heads/$BRANCH"
           count=$(git rev-list --count "$BASE..$COMMIT")
           {
-            echo "Merges Telegram Desktop \`$REF\` (${COMMIT::10}, $count commits since ${BASE::10}) into SereinGram."
+            echo "Merges VeyroGram Desktop \`$REF\` (${COMMIT::10}, $count commits since ${BASE::10}) into SereinGram."
             echo
             echo "Upstream commits:"
             echo
             git log --no-merges --format='- %s' "$BASE..$COMMIT" | head -100
           } > "$RUNNER_TEMP/body.md"
           gh pr create --base develop --head "$BRANCH" \
-            --title "chore(upstream): merge Telegram Desktop $REF ${COMMIT::10}" \
+            --title "chore(upstream): merge VeyroGram Desktop $REF ${COMMIT::10}" \
             --body-file "$RUNNER_TEMP/body.md"
           # Pull requests opened with this token start no workflows by themselves.
           gh workflow run serein-guards.yml --ref "$BRANCH"

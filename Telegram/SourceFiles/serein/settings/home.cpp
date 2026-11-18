@@ -1,4 +1,5 @@
 #include "serein/settings/home.h"
+#include "veyrogram/vg_settings.h"
 #include "serein/hooks/settings/about.h"
 #include "serein/settings/interface.h"
 #include "serein/settings/licenses.h"
@@ -194,7 +195,7 @@ void AddAbout(SectionBuilder &builder) {
 	AddRow(builder, {
 		.title = tr::lng_serein_source_code(),
 		.onClick = [] {
-			UrlClickHandler::Open(u"https://github.com/eltavine/SereinGram"_q);
+			UrlClickHandler::Open(u"https://github.com/wuekevin/VeyroGram-Desktop"_q);
 		},
 		.visual = {
 			.icon = &st::menuIconLink,
@@ -258,6 +259,7 @@ Settings::Type HomeId() {
 }
 
 void AddSettingsEntry(SectionBuilder &builder) {
+	VeyroGram::AddSettingsEntry(builder);
 	builder.addSectionButton({
 		.title = tr::lng_serein_settings(),
 		.targetSection = Home::Id(),

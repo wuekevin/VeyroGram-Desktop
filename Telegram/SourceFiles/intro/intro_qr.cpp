@@ -572,10 +572,15 @@ QImage TelegramLogoImage() {
 	{
 		auto p = QPainter(&result);
 		auto hq = PainterHighQualityEnabler(p);
-		p.setBrush(QrActiveColor());
-		p.setPen(Qt::NoPen);
-		p.drawEllipse(QRect(QPoint(), size));
-		st::introQrPlane.paintInCenter(p, QRect(QPoint(), size));
+		static const auto appLogo = QImage(u":/gui/art/logo_256.png"_q);
+		if (!appLogo.isNull()) {
+			p.drawImage(QRect(QPoint(), size), appLogo);
+		} else {
+			p.setBrush(QrActiveColor());
+			p.setPen(Qt::NoPen);
+			p.drawEllipse(QRect(QPoint(), size));
+			st::introQrPlane.paintInCenter(p, QRect(QPoint(), size));
+		}
 	}
 	return result;
 }

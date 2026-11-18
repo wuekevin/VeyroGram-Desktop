@@ -391,8 +391,8 @@ MainMenu::MainMenu(
 	parentResized();
 
 	_telegram->setMarkedText(tr::link(
-		u"SereinGram"_q,
-		u"https://github.com/eltavine/SereinGram"_q));
+		u"VeyroGram"_q,
+		u"https://github.com/wuekevin/VeyroGram-Desktop"_q));
 	_telegram->setLinksTrusted();
 	// The canary version is too long for the "Version {version}" form.
 	_version->setMarkedText(

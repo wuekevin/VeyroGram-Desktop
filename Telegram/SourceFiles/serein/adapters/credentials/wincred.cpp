@@ -7,7 +7,7 @@ namespace Serein::Ports::SecretStore {
 namespace {
 
 [[nodiscard]] QString Target(const QString &account) {
-	return u"SereinGram Services/"_q + account;
+	return u"VeyroGram Services/"_q + account;
 }
 
 [[nodiscard]] LPCWSTR Name(const QString &target) {

@@ -1,6 +1,6 @@
 # Source atlas
 
-This atlas divides Telegram Desktop's sources into named areas, ordered from foundation to features, each with one responsibility; every source file belongs to exactly one area, and paths are relative to `Telegram/`. Find the area of the code you touch, put new code where an area's responsibility says it belongs, and read the area's own map first when its directory has an `AGENTS.md`. When no area fits, say so in the task instead of inventing a place.
+This atlas divides VeyroGram Desktop's sources into named areas, ordered from foundation to features, each with one responsibility; every source file belongs to exactly one area, and paths are relative to `Telegram/`. Find the area of the code you touch, put new code where an area's responsibility says it belongs, and read the area's own map first when its directory has an `AGENTS.md`. When no area fits, say so in the task instead of inventing a place.
 
 ## Libraries
 

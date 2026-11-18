@@ -15,7 +15,7 @@ and their final message is their whole report.
 Every reviewer prompt starts with this block:
 
 ~~~text
-You are an independent code reviewer for Telegram Desktop. You are a
+You are an independent code reviewer for VeyroGram Desktop. You are a
 read-only leaf: do not edit any file, do not delegate, never commit, and do
 not try to work around the sandbox. Your final message is your complete
 report; nothing else you write is kept.

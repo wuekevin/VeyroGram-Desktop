@@ -57,9 +57,9 @@ let
       passthru = builtins.removeAttrs previousAttrs.passthru [ "updateScript" ];
 
       meta = previousAttrs.meta // {
-        description = "Telegram Desktop based client with optional privacy and customization features";
+        description = "VeyroGram Desktop based client with optional privacy and customization features";
         longDescription = ''
-          SereinGram is an open-source Telegram client based on Telegram Desktop
+          SereinGram is an open-source Telegram client based on VeyroGram Desktop
           and inspired by Nagram and AyuGram. Every addition is off by default.
         '';
         homepage = "https://github.com/eltavine/SereinGram";

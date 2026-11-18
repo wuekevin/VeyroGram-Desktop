@@ -1,4 +1,4 @@
-# SereinGram: api_id and api_hash come from the environment
+# VeyroGram: api_id and api_hash come from the environment
 # (SEREIN_API_ID, SEREIN_API_HASH) or from the uncommitted file
 # Telegram/build/api_credentials.local.cmake. Both are ignored with
 # -D TDESKTOP_API_TEST=ON; explicit -D TDESKTOP_API_ID / TDESKTOP_API_HASH
@@ -34,5 +34,5 @@ if (NOT TDESKTOP_API_TEST
     message(STATUS "Serein: using api_id and api_hash from the environment or local credentials file.")
 endif()
 
-# SereinGram updates through GitHub Releases, never Telegram's update channel.
+# VeyroGram updates through GitHub Releases, never Telegram's update channel.
 set(DESKTOP_APP_DISABLE_AUTOUPDATE ON CACHE BOOL "Disable autoupdate." FORCE)

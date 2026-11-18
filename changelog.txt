@@ -3415,7 +3415,7 @@ Introducing Archived Chats:
 1.5.12 (09.02.19)
 
 - Apply blur effects to backgrounds.
-- Use the backgrounds you set in Telegram Desktop in all other Telegram apps.
+- Use the backgrounds you set in VeyroGram Desktop in all other Telegram apps.
 
 1.5.11 (01.02.19)
 
@@ -3628,7 +3628,7 @@ Added formatting shortcuts. Select text and use:
 
 - Apply markdown formatting (```, `, **, __) only when sending the message.
 - Display connection quality bars in calls.
-- Telegram Desktop can update itself through MTProto.
+- VeyroGram Desktop can update itself through MTProto.
 - Bug fixes and other minor improvements.
 
 1.2.24 alpha (26.05.18)
@@ -5087,7 +5087,7 @@ Added formatting shortcuts. Select text and use:
 
 - Photo loading indicator added.
 - Custom context menus added, including tray menu in Windows.
-- Default download folder to "Downloads/Telegram Desktop".
+- Default download folder to "Downloads/VeyroGram Desktop".
 - Improved OS X tray icon view and behaviour.
 
 0.5.21 (21.09.14)

@@ -196,7 +196,7 @@ jobs:
           path: ${{ runner.temp }}/.buildx-cache
           key: ${{ steps.cache-libs.outputs.cache-primary-key }}
 
-      - name: Restore Telegram Desktop cache.
+      - name: Restore VeyroGram Desktop cache.
         id: cache-tdesktop
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
@@ -269,14 +269,14 @@ jobs:
           echo "ccache misses this run: $MISSES"
           ccache --print-stats | grep -E '^(cache_size_kibibyte|files_in_cache)\b' || true
 
-      - name: Trim Telegram Desktop cache.
+      - name: Trim VeyroGram Desktop cache.
         if: >
           !cancelled()
             && env.SAVE_CACHE == 'true'
             && fromJSON(steps.ccache-stats.outputs.misses) > 300
         run: ccache --evict-older-than 1d
 
-      - name: Save Telegram Desktop cache.
+      - name: Save VeyroGram Desktop cache.
         id: save-tdesktop
         if: >
           !cancelled()
@@ -288,7 +288,7 @@ jobs:
           key: ${{ steps.cache-tdesktop.outputs.cache-primary-key }}
 
       # Keeping one compiler cache per configuration leaves the platform caches inside the quota.
-      - name: Drop older Telegram Desktop caches.
+      - name: Drop older VeyroGram Desktop caches.
         if: "!cancelled() && steps.save-tdesktop.outcome == 'success'"
         continue-on-error: true
         env:

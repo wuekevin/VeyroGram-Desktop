@@ -1,4 +1,5 @@
 #include "serein/app/message_menu.h"
+#include "veyrogram/vg_menu.h"
 
 #include "serein/features/ghost/read_until_here.h"
 #include "serein/features/history/menu.h"
@@ -58,6 +59,7 @@ void AddSelectionActions() {
 } // namespace
 
 void RegisterMessageMenu() {
+	VeyroGram::RegisterTranslateMenuAction();
 	AddItemAction(Menu::InsertQuickRatingActions);
 	AddItemAction(Menu::InsertRepeatActions);
 	AddItemAction(Menu::InsertForwardActions);

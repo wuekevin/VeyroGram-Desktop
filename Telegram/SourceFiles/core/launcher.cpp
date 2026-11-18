@@ -221,7 +221,7 @@ void ComputeInstallationTag() {
 
 bool MoveLegacyAlphaFolder(const QString &folder, const QString &file) {
 	const auto was = cExeDir() + folder;
-	const auto now = cExeDir() + u"SereinGramForcePortable"_q;
+	const auto now = cExeDir() + u"VeyroGramForcePortable"_q;
 	if (QDir(was).exists() && !QDir(now).exists()) {
 		const auto oldFile = was + "/tdata/" + file;
 		const auto newFile = was + "/tdata/alpha";
@@ -242,8 +242,8 @@ bool MoveLegacyAlphaFolder(const QString &folder, const QString &file) {
 }
 
 bool MoveLegacyAlphaFolder() {
-	if (!MoveLegacyAlphaFolder(u"SereinGramAlpha_data"_q, u"alpha"_q)
-		|| !MoveLegacyAlphaFolder(u"SereinGramBeta_data"_q, u"beta"_q)) {
+	if (!MoveLegacyAlphaFolder(u"VeyroGramAlpha_data"_q, u"alpha"_q)
+		|| !MoveLegacyAlphaFolder(u"VeyroGramBeta_data"_q, u"beta"_q)) {
 		return false;
 	}
 	return true;
@@ -254,7 +254,7 @@ bool CheckPortableVersionFolder() {
 		return false;
 	}
 
-	const auto portable = cExeDir() + u"SereinGramForcePortable"_q;
+	const auto portable = cExeDir() + u"VeyroGramForcePortable"_q;
 	QFile key(portable + u"/tdata/alpha"_q);
 	if (cAlphaVersion()) {
 		Assert(*AlphaPrivateKey != 0);
@@ -343,8 +343,8 @@ void Launcher::init() {
 	prepareSettings();
 	initQtMessageLogging();
 
-	QApplication::setApplicationName(u"SereinGram"_q);
-	QApplication::setApplicationDisplayName(u"SereinGram"_q);
+	QApplication::setApplicationName(u"VeyroGram"_q);
+	QApplication::setApplicationDisplayName(u"VeyroGram"_q);
 
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
 	// fallback session management is useless for tdesktop since it doesn't have
@@ -392,7 +392,7 @@ int Launcher::exec() {
 	}
 
 	// Before Logs::start(), which is where the working directory gets
-	// chosen: a translocated bundle never sees its SereinGramForcePortable.
+	// chosen: a translocated bundle never sees its VeyroGramForcePortable.
 	if (!Platform::CheckAppTranslocation()) {
 		return 0;
 	}

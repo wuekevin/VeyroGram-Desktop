@@ -199,7 +199,7 @@ const auto kMeta = BuildHelper({
 					}
 					controller->show(Box(ServicesBox, *current));
 				},
-				.keywords = { u"SereinGram"_q, u"LLM"_q, u"API"_q },
+				.keywords = { u"VeyroGram"_q, u"LLM"_q, u"API"_q },
 				.visual = {
 					.icon = &st::menuIconManage,
 					.about = tr::lng_serein_services_row_about,

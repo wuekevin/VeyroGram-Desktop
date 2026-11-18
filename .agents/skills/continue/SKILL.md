@@ -1,6 +1,6 @@
 ---
 name: continue
-description: Continue autonomous Telegram Desktop development from the shared ai-tdesktop repository. Use when the user invokes $continue or /continue with a batch specification (named tasks, projects, a described theme, the active task, the inbox, or explicitly all pending tasks), or asks Codex to work through a specified part of the AI queue. Resumes this checkout's active task first, freezes exactly the specified batch, includes and consolidates follow-ups discovered from it, and defers everything else; without a specification it only reports the queue and asks for one.
+description: Continue autonomous VeyroGram Desktop development from the shared ai-tdesktop repository. Use when the user invokes $continue or /continue with a batch specification (named tasks, projects, a described theme, the active task, the inbox, or explicitly all pending tasks), or asks Codex to work through a specified part of the AI queue. Resumes this checkout's active task first, freezes exactly the specified batch, includes and consolidates follow-ups discovered from it, and defers everything else; without a specification it only reports the queue and asks for one.
 ---
 
 # Continue AI Work
@@ -37,7 +37,7 @@ review, Debug build, test-loop, evidence, and final publication.
 
 ## Resolve the workspace
 
-Run from a Telegram Desktop checkout. Read `AGENTS.md`, then use the shared
+Run from a VeyroGram Desktop checkout. Read `AGENTS.md`, then use the shared
 helper with the host's Python 3 command:
 
 ```bash

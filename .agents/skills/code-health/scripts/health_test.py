@@ -163,7 +163,7 @@ class TextTests(unittest.TestCase):
     def test_license_header_does_not_hide_the_first_function(self):
         text = dedent('''
             /*
-            This file is part of Telegram Desktop,
+            This file is part of VeyroGram Desktop,
             the official desktop application for the Telegram messaging service.
             */
             #include "app/app.h"

@@ -23,7 +23,7 @@ namespace {
 using Entries = std::vector<Ui::FeatureListEntry>;
 
 [[nodiscard]] QString Repository(const QString &path = QString()) {
-	return u"https://github.com/eltavine/SereinGram"_q + path;
+	return u"https://github.com/wuekevin/VeyroGram-Desktop"_q + path;
 }
 
 [[nodiscard]] Entries NoticeEntries() {
@@ -105,7 +105,7 @@ using Entries = std::vector<Ui::FeatureListEntry>;
 		tr::marked);
 	result.append(u"\n\n"_q);
 	result.append(u"Copyright \u00A9 2014\u20132026 The Telegram Desktop Authors"_q);
-	result.append(u"\nCopyright \u00A9 2026 The SereinGram Authors"_q);
+	result.append(u"\nCopyright \u00A9 2026 The VeyroGram Authors"_q);
 	return result;
 }
 
@@ -133,7 +133,7 @@ using Entries = std::vector<Ui::FeatureListEntry>;
 				lt_chat_link,
 				tr::lng_serein_about_chat_link(
 					tr::now,
-					tr::url(u"https://t.me/SereinGram_chat"_q)),
+					tr::url(u"https://t.me/VeyroGram_chat"_q)),
 				lt_releases_link,
 				tr::link(u"GitHub Releases"_q, Repository(u"/releases"_q)),
 				lt_issues_link,

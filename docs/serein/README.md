@@ -2,7 +2,7 @@
 
 > 状态：Draft 0.1 · 日期：2026-09-30 · 上游基线：`telegramdesktop/tdesktop` 的 `dev`（7.2.10 beta 之后）· 许可证：GPLv3
 
-SereinGram 是基于 Telegram Desktop 的第三方桌面客户端，功能对标手机版 Nagram（iOS、Android）与 AyuGram（Desktop、Android），支持 macOS、Windows 和主流 Linux 发行版。本目录是项目的唯一权威规格：
+SereinGram 是基于 VeyroGram Desktop 的第三方桌面客户端，功能对标手机版 Nagram（iOS、Android）与 AyuGram（Desktop、Android），支持 macOS、Windows 和主流 Linux 发行版。本目录是项目的唯一权威规格：
 
 | 文档 | 内容 |
 | --- | --- |
@@ -16,7 +16,7 @@ SereinGram 是基于 Telegram Desktop 的第三方桌面客户端，功能对标
 
 以下原则是架构评审、代码评审、依赖升级和发布验收的强制检查项。例外必须写入 ADR，说明影响范围、补偿措施和到期条件。
 
-1. **极端模块化**：每个模块职责单一，通过最小的稳定接口协作，边界、依赖方向与所有权显式记录。SereinGram 自有的每个源文件不超过 1000 行，由 CI 守卫强制；上游 Telegram Desktop 的文件不受此限制。
+1. **极端模块化**：每个模块职责单一，通过最小的稳定接口协作，边界、依赖方向与所有权显式记录。SereinGram 自有的每个源文件不超过 1000 行，由 CI 守卫强制；上游 VeyroGram Desktop 的文件不受此限制。
 2. **低耦合与契约隔离**：功能逻辑只依赖端口（port）和 schema 生成的值类型；上游类型只出现在适配器、界面层和挂钩门面中。替换一个实现不得要求修改无关模块。
 3. **面向扩展**：新功能通过注册模块、实现端口或声明 schema 字段接入，不在核心流程中增加条件分支。
 4. **隔离 BREAKING CHANGE**：持久化格式、配置交换文件和 schema 必须版本化，`buf breaking` 在 CI 中阻止不兼容变更；上游 API 的变化只允许波及适配器与挂钩门面。
@@ -26,7 +26,7 @@ SereinGram 是基于 Telegram Desktop 的第三方桌面客户端，功能对标
 ## 1. 范围
 
 - **目标**：实现功能矩阵中对标手机版 Nagram 与 AyuGram 的增强功能；Telegram 官方功能全部保留并随上游更新；三平台构建与发布。
-- **上游**：唯一上游是 Telegram Desktop。Nagram-qt 与 AyuGram 是功能与实现参考，不跟随其提交历史（[ADR-0001](adr/0001-upstream-and-intrusion.md)）。
+- **上游**：唯一上游是 VeyroGram Desktop。Nagram-qt 与 AyuGram 是功能与实现参考，不跟随其提交历史（[ADR-0001](adr/0001-upstream-and-intrusion.md)）。
 - **默认行为**：所有增强默认关闭或跟随 Telegram；全部关闭时客户端行为与上游一致。
 - **非目标**：冒充官方客户端或使用官方客户端的 API 凭据；伪造服务端权益；手机专属交互（振动、滑动手势、底栏等，排除口径见[功能矩阵](features.md#明确排除)末节）。
 

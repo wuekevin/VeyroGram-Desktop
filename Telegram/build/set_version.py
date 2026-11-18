@@ -1,5 +1,5 @@
 '''
-This file is part of Telegram Desktop,
+This file is part of VeyroGram Desktop,
 the official desktop application for the Telegram messaging service.
 
 For license and copyright information please follow this link:

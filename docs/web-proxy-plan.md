@@ -1,8 +1,8 @@
-# Telegram Desktop WEB proxy: refined client design
+# VeyroGram Desktop WEB proxy: refined client design
 
 The hosted half is specified in `../tproxy-server/PLAN.md`. Its multiplexing frame
 format and `MessageChannel` contract are authoritative. This document records the
-reviewed Telegram Desktop design and the implementation now present in this tree.
+reviewed VeyroGram Desktop design and the implementation now present in this tree.
 The server-dependent execution procedure is intentionally separate in
 `docs/web-proxy-test-plan.md`.
 
@@ -24,7 +24,7 @@ MTProto session threads
   -> Telegram
 ```
 
-The central invariant is that Telegram Desktop opens no external MTProto socket
+The central invariant is that VeyroGram Desktop opens no external MTProto socket
 while WEB is active. The hidden WebView's platform web engine makes the external
 HTTPS connection. The hosted relay sees only bytes already transformed by the
 existing MTProxy protocol layer; the MTProxy secret is never placed in HTML or
@@ -254,7 +254,7 @@ failing unrelated multiplexed streams.
 Both directions start with an implicit 4 MiB per-stream window.
 
 Downlink flow control is exact: relay `DATA` consumes client receive credit, and
-Telegram Desktop grants it back only when `WebProxySocket::read()` drains bytes into
+VeyroGram Desktop grants it back only when `WebProxySocket::read()` drains bytes into
 the MTProto engine. This naturally bounds each socket's unread data.
 
 Uplink has a constraint the initial draft missed: `AbstractSocket::write()` returns
@@ -518,7 +518,7 @@ closes the carrier instead of growing browser memory without limit.
 The iframe's status objects update the visible tab and are forwarded to tdesktop.
 When the local WebSocket closes, the parent sends `{t:'close'}` so the bridge can
 delete its relay session. Closing the fallback tab drops the local WebSocket and
-disconnects its logical sockets. Telegram Desktop does not reopen a tab
+disconnects its logical sockets. VeyroGram Desktop does not reopen a tab
 automatically. It keeps trying the hidden WebView with the backoff from §8.
 Reloading cannot reuse the scrubbed, one-shot loopback capability (and the
 listener is closed once a tab authenticated); after another failure, the

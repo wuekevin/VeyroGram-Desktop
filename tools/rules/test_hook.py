@@ -9,7 +9,7 @@ import unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 HOOK = os.path.join(HERE, "hook.py")
-LICENSE = "/*\nThis file is part of Telegram Desktop,\nthe official desktop"\
+LICENSE = "/*\nThis file is part of VeyroGram Desktop,\nthe official desktop"\
     " application for the Telegram messaging service.\n\nFor license and"\
     " copyright information please follow this link:\n"\
     "https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL\n*/\n"

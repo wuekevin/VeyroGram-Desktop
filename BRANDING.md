@@ -1,6 +1,6 @@
 # SereinGram branding
 
-SereinGram is an independent Telegram client based on Telegram Desktop.
+SereinGram is an independent Telegram client based on VeyroGram Desktop.
 Upstream source, history, license and copyright notices remain with their
 respective authors. SereinGram is not affiliated with Telegram, Nagram or
 AyuGram.

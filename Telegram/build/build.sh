@@ -10,7 +10,7 @@ arg3="$3"
 
 if [ ! -d "$FullScriptPath/../../../DesktopPrivate" ]; then
   echo ""
-  echo "This script is for building the production version of Telegram Desktop."
+  echo "This script is for building the production version of VeyroGram Desktop."
   echo ""
   echo "For building custom versions please visit the build instructions page at:"
   echo "https://github.com/telegramdesktop/tdesktop/#build-instructions"
@@ -411,12 +411,12 @@ if [ "$BuildTarget" == "mac" ] || [ "$BuildTarget" == "macstore" ]; then
 
     echo "Signing the application.."
     if [ "$BuildTarget" == "mac" ]; then
-      codesign --force --deep --timestamp --options runtime --sign "Developer ID Application: Telegram FZ-LLC (C67CF9S4VU)" "$ReleasePath/$BundleName" --entitlements "$HomePath/Telegram/Telegram.entitlements"
+      codesign --force --deep --timestamp --options runtime --sign "Developer ID Application: VeyroGram (XXXXXXXXXX)" "$ReleasePath/$BundleName" --entitlements "$HomePath/Telegram/Telegram.entitlements"
     elif [ "$BuildTarget" == "macstore" ]; then
-      codesign --force --timestamp --options runtime --sign "3rd Party Mac Developer Application: Telegram FZ-LLC (C67CF9S4VU)" "$ReleasePath/$BundleName/Contents/Frameworks/Breakpad.framework/Versions/A/Resources/breakpadUtilities.dylib" --entitlements "$HomePath/Telegram/Breakpad.entitlements"
-      codesign --force --deep --timestamp --options runtime --sign "3rd Party Mac Developer Application: Telegram FZ-LLC (C67CF9S4VU)" "$ReleasePath/$BundleName" --entitlements "$HomePath/Telegram/Telegram Lite.entitlements"
+      codesign --force --timestamp --options runtime --sign "3rd Party Mac Developer Application: VeyroGram (XXXXXXXXXX)" "$ReleasePath/$BundleName/Contents/Frameworks/Breakpad.framework/Versions/A/Resources/breakpadUtilities.dylib" --entitlements "$HomePath/Telegram/Breakpad.entitlements"
+      codesign --force --deep --timestamp --options runtime --sign "3rd Party Mac Developer Application: VeyroGram (XXXXXXXXXX)" "$ReleasePath/$BundleName" --entitlements "$HomePath/Telegram/Telegram Lite.entitlements"
       echo "Making an installer.."
-      productbuild --sign "3rd Party Mac Developer Installer: Telegram FZ-LLC (C67CF9S4VU)" --component "$ReleasePath/$BundleName" /Applications "$ReleasePath/$BinaryName.pkg"
+      productbuild --sign "3rd Party Mac Developer Installer: VeyroGram (XXXXXXXXXX)" --component "$ReleasePath/$BundleName" /Applications "$ReleasePath/$BinaryName.pkg"
     fi
     echo "Done!"
 

@@ -96,6 +96,6 @@
   </qresource>
   <qresource prefix="/misc">
     <file alias="default_shortcuts-custom.json">../../default_shortcuts-custom.json</file>
-    <file alias="io.github.eltavine.SereinGram.desktop">../../../../lib/xdg/io.github.eltavine.SereinGram.desktop</file>
+    <file alias="io.github.wuekevin.VeyroGram.desktop">../../../../lib/xdg/io.github.wuekevin.VeyroGram.desktop</file>
   </qresource>
 </RCC>

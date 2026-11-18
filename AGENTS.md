@@ -1,6 +1,6 @@
-# Agent Guide for Telegram Desktop
+# Agent Guide for VeyroGram Desktop
 
-This guide defines repository-wide instructions for coding agents working with the Telegram Desktop codebase.
+This guide defines repository-wide instructions for coding agents working with the VeyroGram Desktop codebase.
 
 ## AI Tasks
 
@@ -529,7 +529,7 @@ auto text = QStringLiteral("Settings");
 
 **Never use `Q_OS_LINUX` for platform checks in new code:**
 
-Telegram Desktop distinguishes at most three platforms: Windows / macOS / all-other. The "all-other" branch covers Linux, the BSD variants and more — and this is almost always the branch you want. `Q_OS_LINUX` narrows it to Linux alone, silently excluding the non-Linux Unix platforms, which is almost never intended. For the all-other branch use `!defined Q_OS_WIN && !defined Q_OS_MAC` at compile time, or its runtime equivalent `Platform::IsLinux()` — which, despite the name, means exactly `!defined Q_OS_WIN && !defined Q_OS_MAC` ("everything except Windows and macOS"), not Linux specifically:
+VeyroGram Desktop distinguishes at most three platforms: Windows / macOS / all-other. The "all-other" branch covers Linux, the BSD variants and more — and this is almost always the branch you want. `Q_OS_LINUX` narrows it to Linux alone, silently excluding the non-Linux Unix platforms, which is almost never intended. For the all-other branch use `!defined Q_OS_WIN && !defined Q_OS_MAC` at compile time, or its runtime equivalent `Platform::IsLinux()` — which, despite the name, means exactly `!defined Q_OS_WIN && !defined Q_OS_MAC` ("everything except Windows and macOS"), not Linux specifically:
 
 ```cpp
 // BAD - excludes FreeBSD and other non-Linux Unix:

@@ -24,7 +24,7 @@ StartWidget::StartWidget(
 	not_null<Data*> data)
 : Step(parent, account, data, true) {
 	setMouseTracking(true);
-	setTitleText(rpl::single(u"SereinGram"_q));
+	setTitleText(rpl::single(u"VeyroGram"_q));
 	setDescriptionText(tr::lng_serein_intro_about());
 	show();
 }

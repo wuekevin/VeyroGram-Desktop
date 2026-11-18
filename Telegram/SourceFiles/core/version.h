@@ -19,9 +19,9 @@ https://github.com/telegramdesktop/tdesktop/blob/master/LEGAL
 
 // used in Updater.cpp and Setup.iss for Windows
 constexpr auto AppId = "{7BDAE480-498A-409E-816D-B1EE06F99A03}"_cs;
-constexpr auto AppNameOld = "SereinGram"_cs;
-constexpr auto AppName = "SereinGram"_cs;
-constexpr auto AppFile = "SereinGram"_cs;
+constexpr auto AppNameOld = "VeyroGram"_cs;
+constexpr auto AppName = "VeyroGram"_cs;
+constexpr auto AppFile = "VeyroGram"_cs;
 constexpr auto AppVersion = 7004001;
 constexpr auto AppVersionStr = "7.4.1";
 constexpr auto AppBetaVersion = false;
