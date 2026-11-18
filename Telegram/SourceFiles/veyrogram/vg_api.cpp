@@ -16,7 +16,10 @@ Based on SereinGram (GPL-3.0). VeyroGram extensions are also GPL-3.0.
 namespace VeyroGram {
 namespace {
 
-const auto kBaseUrl = u"https://api.veyrogram.com/api/v1"_q;
+#ifndef VG_API_BASE_URL
+#define VG_API_BASE_URL "https://api.veyrogram.com/api/v1"
+#endif
+const auto kBaseUrl = u"" VG_API_BASE_URL ""_q;
 constexpr auto kTimeout = 30000; // 30 seconds
 
 [[nodiscard]] QNetworkRequest MakeRequest(
