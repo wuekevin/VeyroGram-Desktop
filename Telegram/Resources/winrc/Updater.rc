@@ -52,10 +52,10 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", "VeyroGram"
-            VALUE "FileDescription", "Telegram Desktop Updater"
+            VALUE "FileDescription", "VeyroGram Desktop Updater"
             VALUE "FileVersion", "7.4.1.0"
             VALUE "LegalCopyright", "Copyright (C) 2014-2026"
-            VALUE "ProductName", "Telegram Desktop"
+            VALUE "ProductName", "VeyroGram Desktop"
             VALUE "ProductVersion", "7.4.1.0"
         END
     END
