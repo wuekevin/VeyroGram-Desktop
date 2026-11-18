@@ -9,6 +9,7 @@ Based on SereinGram (GPL-3.0). VeyroGram extensions are also GPL-3.0.
 
 #include "settings/settings_builder.h"
 #include "styles/style_menu_icons.h"
+#include "window/window_session_controller.h"
 
 namespace VeyroGram {
 

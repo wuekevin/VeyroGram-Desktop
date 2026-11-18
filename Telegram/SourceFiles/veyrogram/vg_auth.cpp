@@ -9,7 +9,6 @@ Based on SereinGram (GPL-3.0). VeyroGram extensions are also GPL-3.0.
 
 #include "ui/layers/generic_box.h"
 #include "ui/widgets/fields/input_field.h"
-#include "ui/widgets/fields/password_input.h"
 #include "ui/widgets/labels.h"
 #include "ui/toast/toast.h"
 #include "styles/style_layers.h"
@@ -65,9 +64,10 @@ void LoginBox(not_null<Ui::GenericBox*> box) {
 		Ui::InputField::Mode::SingleLine,
 		rpl::single(u"Email"_q)));
 
-	const auto password = box->addRow(object_ptr<Ui::PasswordInput>(
+	const auto password = box->addRow(object_ptr<Ui::InputField>(
 		box,
 		st::defaultInputField,
+		Ui::InputField::Mode::SingleLine,
 		rpl::single(u"Password"_q)));
 
 	box->addRow(object_ptr<Ui::FlatLabel>(
@@ -82,7 +82,7 @@ void LoginBox(not_null<Ui::GenericBox*> box) {
 	const auto doLogin = [=] {
 		if (*busy) return;
 		const auto mail = email->getLastText().trimmed();
-		const auto pass = password->text();
+		const auto pass = password->getLastText();
 		if (mail.isEmpty() || pass.isEmpty()) {
 			email->showError();
 			return;
@@ -106,7 +106,7 @@ void LoginBox(not_null<Ui::GenericBox*> box) {
 	const auto doRegister = [=] {
 		if (*busy) return;
 		const auto mail = email->getLastText().trimmed();
-		const auto pass = password->text();
+		const auto pass = password->getLastText();
 		if (mail.isEmpty() || pass.size() < 8) {
 			password->showError();
 			box->uiShow()->showToast(u"Password must be at least 8 characters."_q);
