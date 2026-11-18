@@ -100,7 +100,7 @@ void TranslateBox(
 
 	const auto doTranslate = [=] {
 		if (*busy) return;
-		if (!IsLoggedIn()) {
+		if (!LoadCredentials().valid()) {
 			box->uiShow()->showToast(
 				u"Sign in to your VeyroGram account to use AI Translate."_q);
 			return;
@@ -113,43 +113,48 @@ void TranslateBox(
 		}
 		*busy = true;
 		result->setText(u"Translating..."_q);
-		const auto token = LoadCredentials().accessToken;
 
-		FetchFirstModel(token, crl::guard(box, [=](QString modelUlid) {
-			if (modelUlid.isEmpty()) {
+		WithToken(crl::guard(box, [=](QString token) {
+			if (token.isEmpty()) {
 				*busy = false;
-				result->setText(
-					u"No AI model available. Contact support."_q);
+				result->setText(u"Session expired. Please sign in again."_q);
 				return;
 			}
-			const auto accumulated = box->lifetime()
-				.make_state<QString>();
-			*streamReply = ApiStream(
-				u"/ai/translate/stream"_q,
-				QJsonObject{
-					{ u"model_ulid"_q, modelUlid },
-					{ u"source_lang"_q, u"auto"_q },
-					{ u"target_lang"_q, lang },
-					{ u"text"_q, text },
-				},
-				token,
-				crl::guard(box, [=](QString chunk) {
-					// Each chunk is a partial JSON {"delta":"..."}.
-					const auto obj =
-						QJsonDocument::fromJson(chunk.toUtf8()).object();
-					const auto delta = obj[u"delta"_q].toString();
-					if (!delta.isEmpty()) {
-						accumulated->append(delta);
-						*resultText = *accumulated;
-						result->setText(*accumulated);
-					}
-				}),
-				crl::guard(box, [=](QString error) {
+			FetchFirstModel(token, crl::guard(box, [=](QString modelUlid) {
+				if (modelUlid.isEmpty()) {
 					*busy = false;
-					if (!error.isEmpty()) {
-						result->setText(u"Error: %1"_q.arg(error));
-					}
-				}));
+					result->setText(
+						u"No AI model available. Contact support."_q);
+					return;
+				}
+				const auto accumulated = box->lifetime()
+					.make_state<QString>();
+				*streamReply = ApiStream(
+					u"/ai/translate/stream"_q,
+					QJsonObject{
+						{ u"model_ulid"_q, modelUlid },
+						{ u"source_lang"_q, u"auto"_q },
+						{ u"target_lang"_q, lang },
+						{ u"text"_q, text },
+					},
+					token,
+					crl::guard(box, [=](QString chunk) {
+						const auto obj =
+							QJsonDocument::fromJson(chunk.toUtf8()).object();
+						const auto delta = obj[u"delta"_q].toString();
+						if (!delta.isEmpty()) {
+							accumulated->append(delta);
+							*resultText = *accumulated;
+							result->setText(*accumulated);
+						}
+					}),
+					crl::guard(box, [=](QString error) {
+						*busy = false;
+						if (!error.isEmpty()) {
+							result->setText(u"Error: %1"_q.arg(error));
+						}
+					}));
+			}));
 		}));
 	};
 

@@ -4,8 +4,10 @@ Based on SereinGram (GPL-3.0). VeyroGram extensions are also GPL-3.0.
 */
 #include "veyrogram/vg_api.h"
 
+#include "veyrogram/vg_credentials.h"
 #include "serein/adapters/qtnetwork/manager.h"
 
+#include <QtCore/QDateTime>
 #include <QtCore/QJsonDocument>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
@@ -117,6 +119,39 @@ QNetworkReply *ApiStream(
 	});
 
 	return reply;
+}
+
+void WithToken(Fn<void(QString token)> done) {
+	const auto creds = LoadCredentials();
+	if (!creds.valid()) {
+		done(QString());
+		return;
+	}
+	if (!creds.expired()) {
+		done(creds.accessToken);
+		return;
+	}
+	// Token expired — attempt a silent refresh.
+	ApiPost(
+		u"/auth/refresh"_q,
+		QJsonObject{{ u"refresh_token"_q, creds.refreshToken }},
+		QString(), // no Authorization header for the refresh endpoint
+		[email = creds.email, done](ApiResponse resp) {
+			if (!resp.ok()) {
+				ClearCredentials();
+				done(QString());
+				return;
+			}
+			const auto obj = QJsonDocument::fromJson(resp.body).object();
+			Credentials fresh;
+			fresh.email = email;
+			fresh.accessToken = obj[u"access_token"_q].toString();
+			fresh.refreshToken = obj[u"refresh_token"_q].toString();
+			const auto expiresIn = obj[u"expires_in"_q].toInt(3600);
+			fresh.expiresAt = QDateTime::currentSecsSinceEpoch() + expiresIn;
+			SaveCredentials(fresh);
+			done(fresh.accessToken);
+		});
 }
 
 } // namespace VeyroGram

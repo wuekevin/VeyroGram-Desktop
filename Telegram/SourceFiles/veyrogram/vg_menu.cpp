@@ -18,7 +18,7 @@ namespace VeyroGram {
 
 void RegisterTranslateMenuAction() {
 	Serein::Menu::AddContributor([](const Serein::Menu::Context &ctx) {
-		if (!ctx.menu || !ctx.item || !ctx.controller) return;
+		if (!ctx.item) return;
 
 		const auto text = ctx.item->originalText().text.trimmed();
 		if (text.isEmpty()) return;
