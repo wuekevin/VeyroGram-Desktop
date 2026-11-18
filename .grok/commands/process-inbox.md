@@ -8,7 +8,7 @@ description: Route the local AI inbox into durable planned tasks. Use when the u
 Read `.grok/ai-workflow-adapter.md` and
 `.agents/skills/process-inbox/SKILL.md` completely. Follow the shared skill
 with the Grok adapter's delegation, depth, and text-handling substitutions.
-Process the ignored inbox associated with the current Telegram Desktop
+Process the ignored inbox associated with the current VeyroGram Desktop
 checkout. Route and plan tasks only; do not implement, build, or test them.
 
 Preserve the shared skill's project-continuity bias. A request derived from

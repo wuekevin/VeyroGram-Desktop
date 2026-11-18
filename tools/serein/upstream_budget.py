@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Report and cap how much SereinGram changes upstream Telegram Desktop files.
+"""Report and cap how much SereinGram changes upstream VeyroGram Desktop files.
 
 Every metric is compared with the recorded upstream base commit. Budgets
 only ratchet down: lower them in the policy as hooks are consolidated.

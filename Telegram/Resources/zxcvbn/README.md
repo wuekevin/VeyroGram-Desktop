@@ -6,7 +6,7 @@ frequency lists. They are read only at build time: the rules in
 into the `zxcvbn-c` password dictionary behind
 `Telegram/SourceFiles/ui/passcode_strength.cpp`. No built artifact contains
 these files: they are build-time inputs to a generated header. They are
-tracked, so every source distribution of Telegram Desktop ships them
+tracked, so every source distribution of VeyroGram Desktop ships them
 verbatim, and the attribution below covers those copies as well as the
 dictionary compiled from them.
 
@@ -94,7 +94,7 @@ word's rank, not its count.
 
 ## Compatibility with the application licence
 
-Telegram Desktop is distributed under the GNU General Public License, version
+VeyroGram Desktop is distributed under the GNU General Public License, version
 3 or (at your option) any later version (`/LICENSE`, `/LEGAL`), with the
 OpenSSL linking exception. CC BY-SA 4.0 content may be adapted into a GPLv3
 project on this basis:
@@ -134,7 +134,7 @@ project on this basis:
 cannot make.** Creative Commons declared only GPL version 3 a
 BY-SA-Compatible License, and the wiki page quoted above instructs adapters:
 "You must specify version 3 of the GPL when redistributing a GPL project
-into which BY-SA 4.0 content is adapted." Telegram Desktop's own offer is
+into which BY-SA 4.0 content is adapted." VeyroGram Desktop's own offer is
 broader: `/LEGAL` — and every source file header that points at it — says
 "either version 3 of the License, or (at your option) any later version".
 Once the dictionary compiled from this corpus is linked in, that broader

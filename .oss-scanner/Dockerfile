@@ -4,7 +4,7 @@
 # The scanner gives the whole build 45 minutes, which is not enough to build
 # the third-party libraries, so this starts from the image that
 # .github/workflows/docker.yml publishes from Telegram/build/docker/centos_env
-# with all of them prebuilt, and compiles only Telegram Desktop itself.
+# with all of them prebuilt, and compiles only VeyroGram Desktop itself.
 FROM ghcr.io/telegramdesktop/tdesktop/centos_env:latest
 
 USER root

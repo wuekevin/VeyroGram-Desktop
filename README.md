@@ -4,12 +4,12 @@
 
 **SereinGram** is an unofficial, free and open-source Telegram client for
 macOS, Windows and Linux. It is built on
-[Telegram Desktop](https://github.com/telegramdesktop/tdesktop), keeps every
+[VeyroGram Desktop](https://github.com/telegramdesktop/tdesktop), keeps every
 official Telegram feature and adds a large set of optional enhancements:
 ghost mode, deleted messages and edit history, message filters, a
 presentation mode, translation, transcription and AI services of your
 choice, proxy tools and much more. Every enhancement starts switched off, so
-until you turn something on SereinGram behaves like Telegram Desktop.
+until you turn something on SereinGram behaves like VeyroGram Desktop.
 
 [![Nightly build](https://github.com/eltavine/SereinGram/actions/workflows/serein-nightly.yml/badge.svg?branch=develop)](https://github.com/eltavine/SereinGram/actions/workflows/serein-nightly.yml)
 [![Download Nightly](https://img.shields.io/badge/download-nightly-2ea44f)](https://github.com/eltavine/SereinGram/releases/tag/nightly)
@@ -51,8 +51,8 @@ until you turn something on SereinGram behaves like Telegram Desktop.
 
 ## Highlights
 
-- **All of Telegram Desktop.** Every official feature stays, and the code
-  keeps up with upstream Telegram Desktop through a weekly sync.
+- **All of VeyroGram Desktop.** Every official feature stays, and the code
+  keeps up with upstream VeyroGram Desktop through a weekly sync.
 - **Nothing changes until you want it to.** Every SereinGram option starts
   off, and the quick setup presets preview each change before applying it.
 - **Privacy on your terms.** Ghost mode, a presentation mode for streaming
@@ -304,7 +304,7 @@ Android, see [SereinGram for Android](https://github.com/eltavine/SereinGram-And
 
 > [!WARNING]
 > Until SereinGram's own API credentials are configured, Nightly builds are
-> made with Telegram Desktop's public test credentials. Their release notes
+> made with VeyroGram Desktop's public test credentials. Their release notes
 > say so at the top, and logging in with them may be limited or fail.
 
 File names never change, so the links below always point to the latest
@@ -450,7 +450,7 @@ with the matching line; letter case does not matter.
   the PKGBUILD and the Nix package, are updated by your package manager and
   do not check GitHub. The Flatpak, Snap and Arch Linux packages published
   on GitHub do check it, since no repository updates them.
-- Telegram Desktop's own updater and crash reporter are turned off at build
+- VeyroGram Desktop's own updater and crash reporter are turned off at build
   time; SereinGram never contacts Telegram's update servers.
 
 ## First steps
@@ -458,7 +458,7 @@ with the matching line; letter case does not matter.
 - SereinGram keeps its data in its own `SereinGram` folder (on macOS in
   `~/Library/Application Support/SereinGram`) and never reads Telegram
   Desktop or Nagram profiles, so you log in once more. It can run beside
-  Telegram Desktop; both handle `tg://` links, and your system decides
+  VeyroGram Desktop; both handle `tg://` links, and your system decides
   which one opens them.
 - Open **Settings → SereinGram**. On the first visit a welcome dialog
   explains that everything is off and offers the quick setup presets. The
@@ -489,7 +489,7 @@ with the matching line; letter case does not matter.
   For quick local experiments, `-D TDESKTOP_API_TEST=ON` selects Telegram
   Desktop's public test credentials, which the server limits heavily and
   which are meant for development only.
-- **Toolchain.** SereinGram builds exactly like Telegram Desktop. Follow the
+- **Toolchain.** SereinGram builds exactly like VeyroGram Desktop. Follow the
   upstream guides for [macOS](docs/building-mac.md),
   [Windows](docs/building-win.md) and [Linux](docs/building-linux.md), but
   clone `https://github.com/eltavine/SereinGram.git` instead of
@@ -590,7 +590,7 @@ A full application build also produces `out/serein-tests/<configuration>/test_se
 | `.github/workflows/serein-*.yml` | CI, Nightly, release, packaging, translation and upstream sync workflows |
 
 The [architecture](docs/serein/architecture.md) keeps SereinGram easy to
-merge with Telegram Desktop:
+merge with VeyroGram Desktop:
 
 - Upstream files only include headers from `serein/hooks/`, and each hook
   is a single call or condition; the logic lives under `serein/`.
@@ -598,7 +598,7 @@ merge with Telegram Desktop:
   settings pages, is generated; defaults always match Telegram's behavior.
 - CI enforces module boundaries, a 1000-line limit per SereinGram file and
   a budget for changes to upstream files.
-- `serein-upstream.yml` merges Telegram Desktop's `dev` branch every week
+- `serein-upstream.yml` merges VeyroGram Desktop's `dev` branch every week
   and opens a pull request that must pass all three platform builds.
 
 ## Contributing
@@ -644,15 +644,15 @@ Open an issue on the
 with the version from the About page, your system, the steps that lead to
 the problem and, if possible, whether it also happens with every
 SereinGram option off. Problems that also happen in the official Telegram
-Desktop belong to Telegram Desktop. Never send SereinGram problems to
+Desktop belong to VeyroGram Desktop. Never send SereinGram problems to
 Telegram, Nagram or AyuGram. For questions and discussion, join the
 [SereinGram chat](https://t.me/SereinGram_chat).
 
 ## Privacy
 
 - SereinGram adds no analytics, telemetry, ads or crash reporting.
-  Telegram Desktop's crash reporter and updater are disabled at build time.
-- Besides the connections Telegram Desktop itself makes, SereinGram only
+  VeyroGram Desktop's crash reporter and updater are disabled at build time.
+- Besides the connections VeyroGram Desktop itself makes, SereinGram only
   contacts GitHub for the update check, which you can turn off, and the
   services you set up yourself: translation, transcription and AI
   providers, rule and proxy subscriptions, a custom DNS-over-HTTPS server
@@ -670,7 +670,7 @@ Telegram, Nagram or AyuGram. For questions and discussion, join the
 
 - **Unofficial client.** SereinGram is an independent third-party app. It
   is not developed, endorsed, sponsored or supported by Telegram, and it is
-  not affiliated with Telegram or the Telegram Desktop developers. It talks
+  not affiliated with Telegram or the VeyroGram Desktop developers. It talks
   to Telegram through the public [Telegram API](https://core.telegram.org/api),
   never uses the API credentials of official Telegram apps and never
   presents itself as one.
@@ -684,8 +684,8 @@ Telegram, Nagram or AyuGram. For questions and discussion, join the
   looked at, such as Swiftgram, NekoX and Nekogram.
 - **Origin of the code.** SereinGram's code base started as a fork of
   [Nagram-qt](https://github.com/NextAlone/Nagram-qt), NextAlone's
-  open-source fork of Telegram Desktop. It was then restructured around
-  Telegram Desktop as its only upstream
+  open-source fork of VeyroGram Desktop. It was then restructured around
+  VeyroGram Desktop as its only upstream
   ([ADR-0001](docs/serein/adr/0001-upstream-and-intrusion.md)); the parts
   of that code still in use remain under the GPLv3, with their authorship
   kept in the Git history. Building on GPLv3 code does not create any
@@ -722,9 +722,9 @@ Telegram, Nagram or AyuGram. For questions and discussion, join the
 SereinGram is free software: you can redistribute it and modify it under
 the terms of the GNU General Public License as published by the Free
 Software Foundation, version 3 or any later version, with the OpenSSL
-exception of Telegram Desktop. See [LICENSE](LICENSE) and [LEGAL](LEGAL).
+exception of VeyroGram Desktop. See [LICENSE](LICENSE) and [LEGAL](LEGAL).
 
-- Telegram Desktop: copyright © 2014–2026 The Telegram Desktop Authors.
+- VeyroGram Desktop: copyright © 2014–2026 The VeyroGram Desktop Authors.
 - SereinGram: copyright © 2026 The SereinGram Authors, as recorded in the
   Git history.
 - Bundled components keep their own licenses: OpenCC (Apache-2.0),
@@ -732,7 +732,7 @@ exception of Telegram Desktop. See [LICENSE](LICENSE) and [LEGAL](LEGAL).
   (BSD-2-Clause), RapidJSON (MIT), quirc (ISC) and the WizardLoop
   CreationDate data (MIT). Their full texts are in the app under
   **Settings → SereinGram → Third-party licenses** and on the About page.
-  The libraries Telegram Desktop itself uses keep their licenses as well.
+  The libraries VeyroGram Desktop itself uses keep their licenses as well.
 
 - twidget and litehtml keep their BSD 3-Clause licenses; Gumbo keeps its
   Apache-2.0 license and QuickJS-ng keeps its MIT license.
@@ -742,7 +742,7 @@ exception of Telegram Desktop. See [LICENSE](LICENSE) and [LEGAL](LEGAL).
 
 ## Credits
 
-- [Telegram Desktop](https://github.com/telegramdesktop/tdesktop) and its
+- [VeyroGram Desktop](https://github.com/telegramdesktop/tdesktop) and its
   authors, whose work SereinGram is built on.
 - NextAlone, whose [Nagram-qt](https://github.com/NextAlone/Nagram-qt) was
   the starting point of the code base.
@@ -759,14 +759,14 @@ exception of Telegram Desktop. See [LICENSE](LICENSE) and [LEGAL](LEGAL).
 
 ### 简介
 
-SereinGram 是一款基于 [Telegram Desktop](https://github.com/telegramdesktop/tdesktop) 的非官方、自由开源 Telegram 桌面客户端，支持 macOS、Windows 与主流 Linux 发行版。它保留 Telegram 的全部官方功能，并加入幽灵模式、已删除消息与编辑历史、消息过滤、主播模式、自选的翻译、转写与 AI 服务、代理工具等大量可选增强。所有增强默认关闭；什么都不开启时，SereinGram 的行为与 Telegram Desktop 一致。Android 版见 [SereinGram for Android](https://github.com/eltavine/SereinGram-Android)。
+SereinGram 是一款基于 [VeyroGram Desktop](https://github.com/telegramdesktop/tdesktop) 的非官方、自由开源 Telegram 桌面客户端，支持 macOS、Windows 与主流 Linux 发行版。它保留 Telegram 的全部官方功能，并加入幽灵模式、已删除消息与编辑历史、消息过滤、主播模式、自选的翻译、转写与 AI 服务、代理工具等大量可选增强。所有增强默认关闭；什么都不开启时，SereinGram 的行为与 VeyroGram Desktop 一致。Android 版见 [SereinGram for Android](https://github.com/eltavine/SereinGram-Android)。
 
 产品规格、架构与发布约定的中文文档见 [docs/serein](docs/serein/README.md)，逐项功能与状态见[功能矩阵](docs/serein/features.md)。
 
 ### 下载与安装
 
 - 目前尚未发布正式版。[Nightly](https://github.com/eltavine/SereinGram/releases/tag/nightly) 在每次推送到 `develop` 并通过全部 CI 后更新，始终只包含最新一次构建。
-- 在 SereinGram 配置自己的 API 凭据之前，Nightly 使用 Telegram Desktop 公开的测试凭据构建，发布说明顶部会注明，登录可能受限或失败。
+- 在 SereinGram 配置自己的 API 凭据之前，Nightly 使用 VeyroGram Desktop 公开的测试凭据构建，发布说明顶部会注明，登录可能受限或失败。
 - Windows：安装包或便携版。程序尚未签名，SmartScreen 提示时选择“更多信息”，再选“仍要运行”。
 - macOS：通用版，或 Apple 芯片、Intel 专用磁盘映像。程序只有 ad-hoc 签名、未经公证，首次打开被拦截后，到“系统设置 → 隐私与安全性”中选择“仍要打开”。
 - Linux：`.deb`、`.rpm`、AppImage、便携版、Flatpak、Snap、Arch Linux 软件包与 Nix flake，详见 [Linux 发行版](docs/serein/linux.md)。
@@ -775,15 +775,15 @@ SereinGram 是一款基于 [Telegram Desktop](https://github.com/telegramdesktop
 
 ### 声明
 
-- **非官方客户端**：SereinGram 是独立的第三方应用，并非由 Telegram 开发，也未获得 Telegram 的认可、赞助或支持，与 Telegram 及 Telegram Desktop 的开发者没有关联。它通过公开的 Telegram API 连接，从不使用 Telegram 官方应用的 API 凭据，也从不冒充官方应用。
+- **非官方客户端**：SereinGram 是独立的第三方应用，并非由 Telegram 开发，也未获得 Telegram 的认可、赞助或支持，与 Telegram 及 VeyroGram Desktop 的开发者没有关联。它通过公开的 Telegram API 连接，从不使用 Telegram 官方应用的 API 凭据，也从不冒充官方应用。
 - **与 Nagram、AyuGram 无任何关联**：SereinGram 只是借鉴了 Nagram 与 AyuGram，与这两个项目的作者及维护者没有任何关联：它不是他们的作品，没有与他们合作开发，也未获得他们的认可、审核或支持。请不要就 SereinGram 的任何问题联系他们。SereinGram 参考过的其他客户端（如 Swiftgram、NekoX、Nekogram）同样与本项目无关。
-- **代码来源**：SereinGram 的代码库最初分支自 NextAlone 基于 Telegram Desktop 的开源分支 [Nagram-qt](https://github.com/NextAlone/Nagram-qt)，此后改为以 Telegram Desktop 为唯一上游并重新组织；其中仍在使用的代码继续以 GPLv3 授权，作者信息保留在 Git 历史中。基于 GPLv3 代码开发并不构成任何关联。
+- **代码来源**：SereinGram 的代码库最初分支自 NextAlone 基于 VeyroGram Desktop 的开源分支 [Nagram-qt](https://github.com/NextAlone/Nagram-qt)，此后改为以 VeyroGram Desktop 为唯一上游并重新组织；其中仍在使用的代码继续以 GPLv3 授权，作者信息保留在 Git 历史中。基于 GPLv3 代码开发并不构成任何关联。
 - **服务条款与账号风险**：通过 SereinGram 使用 Telegram 时，仍须遵守 [Telegram 服务条款](https://telegram.org/tos)与 [Telegram API 服务条款](https://core.telegram.org/api/terms)。幽灵模式、保留已删除的消息与已过期的限时媒体、保存受保护内容等可选功能可能违反这些条款。它们默认全部关闭；是否开启由你自行决定并自担风险，包括 Telegram 因此对账号施加的任何限制。
 - **尊重他人**：保留他人已删除的消息、在不发送已读回执的情况下阅读或截取受保护内容，都可能违背对方的预期。请尊重他人的隐私，并遵守适用于你的法律。
 - **无担保**：SereinGram 按“现状”提供，在法律允许的范围内不附带任何明示或默示的担保。开发者不对因使用本软件造成的数据丢失、账号受限或其他任何损失承担责任。Nightly 构建是开发版本，可能不稳定。
 - **名称与商标**：Telegram、Nagram、AyuGram 以及本文提到的其他名称归各自所有者所有，仅用于说明 SereinGram 的来源与兼容对象。SereinGram 使用自己的名称与图标，没有使用 Telegram 或 Nagram 的图形作为应用标识。
-- **隐私**：SereinGram 没有加入任何统计、遥测、广告或崩溃报告。除 Telegram Desktop 本身的连接外，它只会连接 GitHub 检查更新（可在 SereinGram 的界面设置中关闭），以及你自己设置的服务。
+- **隐私**：SereinGram 没有加入任何统计、遥测、广告或崩溃报告。除 VeyroGram Desktop 本身的连接外，它只会连接 GitHub 检查更新（可在 SereinGram 的界面设置中关闭），以及你自己设置的服务。
 
 ### 许可与致谢
 
-SereinGram 以 GNU GPL 第 3 版（或任何更新的版本）授权，并沿用 Telegram Desktop 的 OpenSSL 例外条款，见 [LICENSE](LICENSE) 与 [LEGAL](LEGAL)。感谢 Telegram Desktop 的作者们、Nagram-qt 的作者 NextAlone、图标设计者 [OukaroMF](https://github.com/OukaroMF/)，以及 OpenCC、marisa-trie、darts-clone、RapidJSON、quirc、WizardLoop CreationDate 等开源项目。问题报告请提交到 [GitHub Issues](https://github.com/eltavine/SereinGram/issues)，提问与交流请到 [SereinGram 群组](https://t.me/SereinGram_chat)。
+SereinGram 以 GNU GPL 第 3 版（或任何更新的版本）授权，并沿用 VeyroGram Desktop 的 OpenSSL 例外条款，见 [LICENSE](LICENSE) 与 [LEGAL](LEGAL)。感谢 VeyroGram Desktop 的作者们、Nagram-qt 的作者 NextAlone、图标设计者 [OukaroMF](https://github.com/OukaroMF/)，以及 OpenCC、marisa-trie、darts-clone、RapidJSON、quirc、WizardLoop CreationDate 等开源项目。问题报告请提交到 [GitHub Issues](https://github.com/eltavine/SereinGram/issues)，提问与交流请到 [SereinGram 群组](https://t.me/SereinGram_chat)。

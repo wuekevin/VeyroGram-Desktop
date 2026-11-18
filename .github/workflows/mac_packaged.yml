@@ -221,7 +221,7 @@ jobs:
           cmake --build build
           cmake --install build
 
-      - name: Telegram Desktop build.
+      - name: VeyroGram Desktop build.
         if: env.ONLY_CACHE == 'false'
         run: |
           cd $REPO_NAME

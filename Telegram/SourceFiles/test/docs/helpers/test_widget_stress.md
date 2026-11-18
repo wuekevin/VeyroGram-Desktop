@@ -346,7 +346,7 @@ observations are below.
 | Field | Source |
 | --- | --- |
 | `kit` | `manifest.json`'s `version`; `commit` is `framework`. |
-| `platform`, `client`, `renderer`, `rendererKind` | `desktop`, `Telegram Desktop`, `twidget-core`, `own`. |
+| `platform`, `client`, `renderer`, `rendererKind` | `desktop`, `VeyroGram Desktop`, `twidget-core`, `own`. |
 | `clientBuild` | `AppVersionStr`, `Debug` or `Release`, the build's CPU architecture, then `buildNote`. |
 | `framework`, `engine` | The arguments, as given. |
 | `device.model`, `device.os`, `device.ramMb` | The registry's `ProcessorNameString`, `QSysInfo`'s product name with its kernel, `GetPhysicallyInstalledSystemMemory`. |

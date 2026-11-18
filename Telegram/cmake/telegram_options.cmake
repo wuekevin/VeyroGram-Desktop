@@ -1,4 +1,4 @@
-# This file is part of Telegram Desktop,
+# This file is part of VeyroGram Desktop,
 # the official desktop application for the Telegram messaging service.
 #
 # For license and copyright information please follow this link:
@@ -19,7 +19,7 @@ if (TDESKTOP_API_ID STREQUAL "0" OR TDESKTOP_API_HASH STREQUAL "")
     " \n"
     " PROVIDE: -D TDESKTOP_API_ID=[API_ID] -D TDESKTOP_API_HASH=[API_HASH]\n"
     " \n"
-    " > To build your version of Telegram Desktop you're required to provide\n"
+    " > To build your version of VeyroGram Desktop you're required to provide\n"
     " > your own 'api_id' and 'api_hash' for the Telegram API access.\n"
     " >\n"
     " > How to obtain your 'api_id' and 'api_hash' is described here:\n"

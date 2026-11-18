@@ -1,4 +1,4 @@
-# Telegram Desktop WEB proxy: server-ready execution test plan
+# VeyroGram Desktop WEB proxy: server-ready execution test plan
 
 Execute this document only after a hosted relay matching
 `../tproxy-server/PLAN.md` is deployed. Record every requested value and artifact in
@@ -175,7 +175,7 @@ Also capture a short packet trace or firewall connection log if permitted.
 
 Verify:
 
-- in the primary mode, Telegram Desktop's WebView/WebContent process owns the HTTPS
+- in the primary mode, VeyroGram Desktop's WebView/WebContent process owns the HTTPS
   connection to the relay and no loopback WebSocket is connected;
 - Telegram's ordinary MTProto sockets have no external connection to the relay,
   stock MTProxy, or Telegram DCs; the relay connection belongs only to the platform
@@ -185,7 +185,7 @@ Verify:
   custom proxy/DC resolver in tdesktop;
 - external carrier traffic remains inside the WebView-owned TLS connection.
 
-Repeat after explicitly accepting browser fallback. In that mode Telegram Desktop
+Repeat after explicitly accepting browser fallback. In that mode VeyroGram Desktop
 must connect only to `127.0.0.1:<ephemeral>` for this transport, and the browser must
 own the external HTTPS connection to the relay.
 

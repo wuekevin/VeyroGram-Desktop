@@ -10,7 +10,7 @@ section: net
 priority: optional
 maintainer: SereinGram contributors
 description: |-
-  Telegram Desktop based client with optional privacy and customization
+  VeyroGram Desktop based client with optional privacy and customization
   features. Every added feature is off until it is enabled in settings.
 vendor: SereinGram
 homepage: https://github.com/eltavine/SereinGram

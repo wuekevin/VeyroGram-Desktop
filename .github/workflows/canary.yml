@@ -601,7 +601,7 @@ jobs:
             ${{ env.LibrariesPath }}\cache_keys\[qQ]t[_-]*
           key: ${{ steps.cache-qt.outputs.cache-primary-key }}
 
-      - name: Telegram Desktop build.
+      - name: VeyroGram Desktop build.
         run: |
           cd %TBUILD%\%REPO_NAME%\Telegram
 
@@ -875,7 +875,7 @@ jobs:
             ThirdParty
           key: ${{ steps.cache-libs.outputs.cache-primary-key }}
 
-      - name: Telegram Desktop build.
+      - name: VeyroGram Desktop build.
         run: |
           cd $REPO_NAME/Telegram
 
@@ -1343,7 +1343,7 @@ jobs:
           printf 'static const char *AlphaPrivateKey = "%s";\n' \
             "$(random_key)" > ../DesktopPrivate/alpha_private.h
 
-      - name: Telegram Desktop build.
+      - name: VeyroGram Desktop build.
         run: |
           docker run --rm \
           -u $(id -u) \

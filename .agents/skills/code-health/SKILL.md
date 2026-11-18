@@ -1,6 +1,6 @@
 ---
 name: code-health
-description: Measure Telegram Desktop code health on freshly fetched origin/dev, keep a findings ledger with stable identities, survey one hot area in depth, and turn findings into proposed quality tasks with proportional proof. Use for the scheduled code-health run, an explicitly requested area survey or area map, or checking a change against the quality ratchet.
+description: Measure VeyroGram Desktop code health on freshly fetched origin/dev, keep a findings ledger with stable identities, survey one hot area in depth, and turn findings into proposed quality tasks with proportional proof. Use for the scheduled code-health run, an explicitly requested area survey or area map, or checking a change against the quality ratchet.
 ---
 
 # Code health
@@ -18,7 +18,7 @@ and Git, and finish in seconds.
 
 ## Where it runs and where its state lives
 
-Any Telegram Desktop checkout with `ai-tdesktop` beside it runs code health;
+Any VeyroGram Desktop checkout with `ai-tdesktop` beside it runs code health;
 no checkout is special. The shared state lives in ai-tdesktop's
 `code-health/`, so every checkout and machine sees one ledger and one set of
 decisions:

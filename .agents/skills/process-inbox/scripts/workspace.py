@@ -201,7 +201,7 @@ def source_root(value):
 	start = Path(value).expanduser().resolve() if value else Path.cwd()
 	root = git_root(start)
 	if not (root / "Telegram" / "build").is_dir():
-		raise WorkspaceError(f"Not a Telegram Desktop checkout: {root}")
+		raise WorkspaceError(f"Not a VeyroGram Desktop checkout: {root}")
 	return root
 
 

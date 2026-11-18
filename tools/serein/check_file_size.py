@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Fail when a SereinGram-owned source file exceeds the line limit.
 
-Upstream Telegram Desktop files are exempt: only paths listed under
+Upstream VeyroGram Desktop files are exempt: only paths listed under
 "owned" in the policy are checked. So are the files listed under
 "generated", which tools write, such as lockfiles.
 """

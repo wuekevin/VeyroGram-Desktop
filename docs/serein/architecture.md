@@ -1,6 +1,6 @@
 # SereinGram 架构与重构方案
 
-本方案参考 `pingora-panel` 的 ports-and-adapters 结构：上游框架（Telegram Desktop）只出现在适配器、界面层和挂钩门面中；核心模型、用例与存储契约不依赖上游。取舍记录见 [ADR](adr/)。
+本方案参考 `pingora-panel` 的 ports-and-adapters 结构：上游框架（VeyroGram Desktop）只出现在适配器、界面层和挂钩门面中；核心模型、用例与存储契约不依赖上游。取舍记录见 [ADR](adr/)。
 
 ## 1. 现状
 

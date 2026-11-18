@@ -65,12 +65,12 @@ body:
       required: true
   - type: dropdown
     attributes:
-      label: Official Telegram Desktop
-      description: Does the problem also happen in official Telegram Desktop?
+      label: Official VeyroGram Desktop
+      description: Does the problem also happen in official VeyroGram Desktop?
       multiple: false
       options:
         - No, only in SereinGram
-        - Yes, also in official Telegram Desktop
+        - Yes, also in official VeyroGram Desktop
         - Not checked
     validations:
       required: true

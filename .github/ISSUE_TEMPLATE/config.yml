@@ -3,9 +3,9 @@ contact_links:
   - name: 💬 I want to ask a question
     url: https://t.me/SereinGram_chat
     about: Ask questions and talk about SereinGram in the SereinGram chat instead of opening an issue.
-  - name: 🐞 The bug also happens in official Telegram Desktop
+  - name: 🐞 The bug also happens in official VeyroGram Desktop
     url: https://github.com/telegramdesktop/tdesktop/issues
-    about: Only report it upstream after checking it in official Telegram Desktop. Never report SereinGram-only problems there.
+    about: Only report it upstream after checking it in official VeyroGram Desktop. Never report SereinGram-only problems there.
   - name: 🚫 My account is banned or restricted
     url: https://telegram.org/support
     about: Only Telegram can review account restrictions. If a Nightly cannot log in, read the credentials notice in its release notes first.

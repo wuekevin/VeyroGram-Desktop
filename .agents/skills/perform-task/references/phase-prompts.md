@@ -159,7 +159,7 @@ turns out larger than those criteria; the performer then reruns Phase 1 as a
 proper leaf.
 
 ```text
-You are a context-gathering and planning agent for a large C++ codebase (Telegram Desktop).
+You are a context-gathering and planning agent for a large C++ codebase (VeyroGram Desktop).
 
 TASK: <TASK>
 
@@ -603,7 +603,7 @@ the ordinary blocking rule differ, this bar decides.
 ### Shared specialist preamble
 
 ~~~text
-You are an independent <LENS> specialist reviewing one Telegram Desktop task.
+You are an independent <LENS> specialist reviewing one VeyroGram Desktop task.
 You are a leaf and must not delegate.
 
 Read:
@@ -747,7 +747,7 @@ continue that reviewer when possible; a replacement synthesis reviewer starts
 from its saved work rather than duplicating it.
 
 ~~~text
-You are the mandatory general reviewer for one Telegram Desktop task,
+You are the mandatory general reviewer for one VeyroGram Desktop task,
 initial review, pass <PASS> of 2. You are a leaf and must not delegate.
 
 Read:
@@ -852,7 +852,7 @@ reconciliation. NEEDS_CHANGES requires at least one blocking finding.
 ### Focused general re-review
 
 ~~~text
-You are the mandatory focused general reviewer for one Telegram Desktop task,
+You are the mandatory focused general reviewer for one VeyroGram Desktop task,
 review round <R> after a blocking fix. You are a leaf and must not delegate.
 
 Read:
@@ -906,7 +906,7 @@ for a round count; the performer owns the count checkpoints.
 ### Review convergence assessment
 
 ~~~text
-You are an independent review-convergence assessor for one Telegram Desktop
+You are an independent review-convergence assessor for one VeyroGram Desktop
 task. You are a leaf and must not delegate or edit source.
 
 Read the task, context.md, assessed plan.md, every canonical review<R>.md, every
@@ -964,7 +964,7 @@ the scheduler's later split worker assigns the sealed implementation carrier.
 ### Review fix
 
 ~~~text
-You are a review-fix agent for one Telegram Desktop task. You are a leaf and
+You are a review-fix agent for one VeyroGram Desktop task. You are a leaf and
 must not delegate.
 
 Read context.md, plan.md, review<R>.md, AGENTS.md, REVIEW.md, the `## Rulings`
@@ -997,7 +997,7 @@ instrument is not automatically the instrument to repair; choose the next more
 direct practical way to execute the changed surface.
 
 ~~~text
-You are an evidence-recovery agent for one Telegram Desktop task. The retained
+You are an evidence-recovery agent for one VeyroGram Desktop task. The retained
 implementation stays unchanged unless a sound check proves IMPL_BUG. You are a
 leaf and must not delegate.
 

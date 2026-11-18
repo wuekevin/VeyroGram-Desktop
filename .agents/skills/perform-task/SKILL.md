@@ -51,7 +51,7 @@ Read that file too.
 
 ## Resolve the workspace and task
 
-Run from a Telegram Desktop checkout. Use the host's Python 3 command:
+Run from a VeyroGram Desktop checkout. Use the host's Python 3 command:
 
 ```bash
 python3 .agents/skills/process-inbox/scripts/workspace.py resolve \

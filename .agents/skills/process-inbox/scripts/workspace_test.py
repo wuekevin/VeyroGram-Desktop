@@ -2920,7 +2920,7 @@ class MechanicsTest(unittest.TestCase):
 				"pid": 15,
 				"parent_pid": 1,
 				"name": "Telegram.exe",
-				"executable": "C:/Users/test/Telegram Desktop/Telegram.exe",
+				"executable": "C:/Users/test/VeyroGram Desktop/Telegram.exe",
 				"command_line": "Telegram.exe",
 			},
 		]

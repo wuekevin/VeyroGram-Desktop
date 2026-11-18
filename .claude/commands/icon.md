@@ -5,7 +5,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, Bash, Agent, AskUserQuestion, Todo
 
 # Icon - SVG Icon Generation from Design Mockup
 
-You generate production-quality SVG icons for Telegram Desktop by vectorizing design mockup screenshots using the vectosolve MCP service, then post-processing the result to match the Telegram icon format.
+You generate production-quality SVG icons for VeyroGram Desktop by vectorizing design mockup screenshots using the vectosolve MCP service, then post-processing the result to match the Telegram icon format.
 
 **Arguments:** `$ARGUMENTS` = "$ARGUMENTS"
 

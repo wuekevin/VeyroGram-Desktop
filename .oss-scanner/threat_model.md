@@ -1,8 +1,8 @@
 # Threat model
 
-## What Telegram Desktop is and where untrusted input enters
+## What VeyroGram Desktop is and where untrusted input enters
 
-Telegram Desktop is the official desktop client for Telegram, written in C++20 with Qt 6, for Windows, macOS and
+VeyroGram Desktop is the official desktop client for Telegram, written in C++20 with Qt 6, for Windows, macOS and
 Linux. It speaks MTProto 2.0 to Telegram's servers itself (`Telegram/SourceFiles/mtproto/`), keeps an encrypted local
 cache (`Telegram/SourceFiles/storage/`), and renders everything that users, bots and channels send. The desktop-app
 libraries are submodules under `Telegram/lib_*` (UI and text layout in `lib_ui`, Lottie in `lib_lottie`, TL
@@ -69,7 +69,7 @@ Lower priority: settings, boxes and other UI layout code, `info/`, `statistics/`
 Out of scope:
 
 * the libraries prebuilt in the base image (Qt, FFmpeg, OpenSSL, WebRTC, OpenAL and others), except where
-  Telegram Desktop misuses them;
+  VeyroGram Desktop misuses them;
 * vendored code in `Telegram/ThirdParty/`, unless content from Telegram reaches the bug. Then name the upstream
   project;
 * `Telegram/SourceFiles/test/` and anything else under `#ifdef _DEBUG`. This image is a Debug build, but that code
@@ -120,4 +120,4 @@ demonstrated exploit.
 * `api_id` and `api_hash` values in the source, which are public by design (`docs/api_credentials.md`).
 * Attacks by someone who already has the user's local account or files, including reading the profile folder of an
   account without a local passcode.
-* Bugs in the prebuilt libraries listed above, unless Telegram Desktop's use of them is the problem.
+* Bugs in the prebuilt libraries listed above, unless VeyroGram Desktop's use of them is the problem.

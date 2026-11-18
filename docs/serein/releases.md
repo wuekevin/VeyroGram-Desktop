@@ -78,7 +78,7 @@ macOS 的三个磁盘映像来自同一次通用构建：单架构版本对应�
 }
 ```
 
-`channel` 为 `nightly` 或 `release`；`version` 是构建所基于的 Telegram Desktop 版本；`kind` 取值 `installer`、`portable`、`disk-image`、`appimage`、`deb`、`rpm`、`flatpak`、`snap`、`pacman`、`zsync`。
+`channel` 为 `nightly` 或 `release`；`version` 是构建所基于的 VeyroGram Desktop 版本；`kind` 取值 `installer`、`portable`、`disk-image`、`appimage`、`deb`、`rpm`、`flatpak`、`snap`、`pacman`、`zsync`。
 
 `release.json` 也是应用内更新检查的接口，因此按兼容契约演进：只追加字段与 `kind` 取值，不删除、不改名、不改变已有字段的含义；需要不兼容的改动时发布新的文件名，并继续发布 `schema_version` 为 1 的 `release.json`。客户端忽略不认识的字段，拒绝其他 `schema_version`，并逐项丢弃不安全的产物（非 github.com 的 HTTPS 链接、链接与文件名不符、哈希或大小无效）。`tools/serein/tests/fixtures/release_manifest.json` 同时被发布脚本的测试与客户端的核心测试使用，任一端改动契约都会让测试失败。
 
@@ -90,7 +90,7 @@ AppImage 内嵌 AppImage 规范的更新信息 `gh-releases-zsync|<所有者>|<�
 
 ## 4. 发布页内容
 
-Release 正文最上方是自动生成的变更记录：Nightly 列出自上一个 Nightly 以来、正式版列出自上一个 `v*` 标签以来 `develop` 主线上的提交，按 Conventional Commits 类型分为不兼容变更、新功能、修复、性能与 Telegram Desktop 上游合并，构建、工具与文档等其余提交折叠显示；随后是按系统与架构排列的下载表与校验说明。生成逻辑在 `tools/serein/release.py`。
+Release 正文最上方是自动生成的变更记录：Nightly 列出自上一个 Nightly 以来、正式版列出自上一个 `v*` 标签以来 `develop` 主线上的提交，按 Conventional Commits 类型分为不兼容变更、新功能、修复、性能与 VeyroGram Desktop 上游合并，构建、工具与文档等其余提交折叠显示；随后是按系统与架构排列的下载表与校验说明。生成逻辑在 `tools/serein/release.py`。
 
 ## 4a. Telegram 频道
 
@@ -98,7 +98,7 @@ Release 正文最上方是自动生成的变更记录：Nightly 列出自上一�
 
 ## 5. API 凭据
 
-正式版必须使用 SereinGram 自己的 API 凭据（仓库 Secrets `SEREIN_API_ID`、`SEREIN_API_HASH`）。缺少凭据时 `serein-release.yml` 仍完成整套构建并保留产物供内部测试，但不发布正式版，并以“Release credentials”任务失败提示配置。Nightly 在缺少凭据时改用 Telegram Desktop 源码中公开的测试凭据（`TDESKTOP_API_TEST`）构建并照常发布，发布任务只给出警告；`release.py notes --test-credentials` 把 `tools/serein/credentials_notice.md` 中的英文声明放在正文最上方：SereinGram 尚未配置开发者 API 凭据，本 Nightly 使用 Telegram Desktop 公开的测试凭据构建，登录可能受限或失败，配置凭据后会自动发布新的 Nightly。声明的措辞由 `tools/serein/tests/test_release.py` 固定。配置凭据后的下一个 Nightly 不再带这段声明。
+正式版必须使用 SereinGram 自己的 API 凭据（仓库 Secrets `SEREIN_API_ID`、`SEREIN_API_HASH`）。缺少凭据时 `serein-release.yml` 仍完成整套构建并保留产物供内部测试，但不发布正式版，并以“Release credentials”任务失败提示配置。Nightly 在缺少凭据时改用 VeyroGram Desktop 源码中公开的测试凭据（`TDESKTOP_API_TEST`）构建并照常发布，发布任务只给出警告；`release.py notes --test-credentials` 把 `tools/serein/credentials_notice.md` 中的英文声明放在正文最上方：SereinGram 尚未配置开发者 API 凭据，本 Nightly 使用 VeyroGram Desktop 公开的测试凭据构建，登录可能受限或失败，配置凭据后会自动发布新的 Nightly。声明的措辞由 `tools/serein/tests/test_release.py` 固定。配置凭据后的下一个 Nightly 不再带这段声明。
 
 ## 6. 构建矩阵与质量门禁
 
@@ -110,7 +110,7 @@ Release 正文最上方是自动生成的变更记录：Nightly 列出自上一�
 | `serein-ci.yml` | 被 `serein-nightly.yml` 与 `serein-release.yml` 调用 | 一个提交的全部 CI：守卫、Release 矩阵、Flatpak、Snap、Arch Linux 与 Nix |
 | `serein-nightly.yml` | 每次推送到 `develop`、手动 | 全部 CI 通过后清空并重新填充固定的 `nightly` 发布，再把二进制产物发到 Telegram 频道 |
 | `serein-release.yml` | 仅手动 | 全部 CI、校验文件、变更记录与正式版草稿 |
-| `serein-upstream.yml` | 每周一、手动 | 合并 Telegram Desktop `dev`，开同步 PR 并触发守卫与三平台构建 |
+| `serein-upstream.yml` | 每周一、手动 | 合并 VeyroGram Desktop `dev`，开同步 PR 并触发守卫与三平台构建 |
 
 构建尽量可重复：依赖与工具按版本或校验和固定，Linux 构建以提交时间作为 `SOURCE_DATE_EPOCH`；不承诺逐字节一致。运行器镜像固定为具体版本（`ubuntu-24.04`、`ubuntu-24.04-arm`、`macos-26`、`windows-2025-vs2026`、`windows-11-arm`），不随 `-latest` 标签迁移。
 

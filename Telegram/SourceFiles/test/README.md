@@ -1,4 +1,4 @@
-# Telegram Desktop task-test harness
+# VeyroGram Desktop task-test harness
 
 Read this short guide before designing, authoring or recovering a Telegram
 `-testagent` overlay. Then read only the references needed by the task and

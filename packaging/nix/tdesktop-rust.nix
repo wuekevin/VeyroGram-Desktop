@@ -100,7 +100,7 @@ stdenv.mkDerivation {
   '';
 
   meta = {
-    description = "Combined Rust archive and wallet bindings for Telegram Desktop";
+    description = "Combined Rust archive and wallet bindings for VeyroGram Desktop";
     license = with lib.licenses; [
       mit
       asl20
