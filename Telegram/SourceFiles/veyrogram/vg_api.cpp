@@ -4,10 +4,8 @@ Based on SereinGram (GPL-3.0). VeyroGram extensions are also GPL-3.0.
 */
 #include "veyrogram/vg_api.h"
 
-#include "veyrogram/vg_credentials.h"
 #include "serein/adapters/qtnetwork/manager.h"
 
-#include <QtCore/QDateTime>
 #include <QtCore/QJsonDocument>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
@@ -21,6 +19,7 @@ namespace {
 #endif
 const auto kBaseUrl = u"" VG_API_BASE_URL ""_q;
 constexpr auto kTimeout = 30000; // 30 seconds
+constexpr auto kRawLimit = 4096;
 
 [[nodiscard]] QNetworkRequest MakeRequest(
 		const QString &path,
@@ -93,9 +92,14 @@ QNetworkReply *ApiStream(
 
 	// Accumulate partial SSE frames across readyRead signals.
 	const auto accum = std::make_shared<QByteArray>();
+	const auto raw = std::make_shared<QByteArray>();
 
 	QObject::connect(reply, &QNetworkReply::readyRead, reply, [=] {
-		accum->append(reply->readAll());
+		const auto chunk = reply->readAll();
+		if (raw->size() < kRawLimit) {
+			raw->append(chunk);
+		}
+		accum->append(chunk);
 		// Consume complete newline-terminated SSE lines.
 		while (true) {
 			const int nl = accum->indexOf('\n');
@@ -114,47 +118,25 @@ QNetworkReply *ApiStream(
 
 	QObject::connect(reply, &QNetworkReply::finished, reply, [=] {
 		reply->deleteLater();
-		if (reply->error() != QNetworkReply::NoError) {
-			onDone(reply->errorString());
-		} else {
+		if (reply->error() == QNetworkReply::NoError) {
 			onDone(QString());
+			return;
+		}
+		const auto status = reply->attribute(
+			QNetworkRequest::HttpStatusCodeAttribute).toInt();
+		raw->append(reply->readAll());
+		const auto code = QJsonDocument::fromJson(*raw).object()
+			[u"error"_q].toString();
+		if (!code.isEmpty()) {
+			onDone(code);
+		} else if (status > 0) {
+			onDone(u"HTTP %1"_q.arg(status));
+		} else {
+			onDone(reply->errorString());
 		}
 	});
 
 	return reply;
-}
-
-void WithToken(Fn<void(QString token)> done) {
-	const auto creds = LoadCredentials();
-	if (!creds.valid()) {
-		done(QString());
-		return;
-	}
-	if (!creds.expired()) {
-		done(creds.accessToken);
-		return;
-	}
-	// Token expired — attempt a silent refresh.
-	ApiPost(
-		u"/auth/refresh"_q,
-		QJsonObject{{ u"refresh_token"_q, creds.refreshToken }},
-		QString(), // no Authorization header for the refresh endpoint
-		[email = creds.email, done](ApiResponse resp) {
-			if (!resp.ok()) {
-				ClearCredentials();
-				done(QString());
-				return;
-			}
-			const auto obj = QJsonDocument::fromJson(resp.body).object();
-			Credentials fresh;
-			fresh.email = email;
-			fresh.accessToken = obj[u"access_token"_q].toString();
-			fresh.refreshToken = obj[u"refresh_token"_q].toString();
-			const auto expiresIn = obj[u"expires_in"_q].toInt(3600);
-			fresh.expiresAt = QDateTime::currentSecsSinceEpoch() + expiresIn;
-			SaveCredentials(fresh);
-			done(fresh.accessToken);
-		});
 }
 
 } // namespace VeyroGram

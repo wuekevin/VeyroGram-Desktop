@@ -380,6 +380,12 @@ This atlas divides VeyroGram Desktop's sources into named areas, ordered from fo
 - Paths: `SourceFiles/wallet/`
 - The card and balance, history, send and receive, collectible transfers, transaction details, collectibles, phrase backup, import and rotation, currency choice and the visuals reused by the chat transfer bubble. It must not own wallet state, keys or transport.
 
+## Features: VeyroGram services
+
+### veyrogram — commercial services client
+- Paths: `SourceFiles/veyrogram/`
+- The client of the VeyroGram backend: the per-installation identity and session tokens kept in the OS secret store, automatic device-login and heartbeat after Telegram sign-in, the services settings box, AI translation and update manifest signature verification. It must not own Telegram authentication, read chats, contacts or phone numbers, or add a separate account login.
+
 ## Platform
 
 ### platform — OS integration

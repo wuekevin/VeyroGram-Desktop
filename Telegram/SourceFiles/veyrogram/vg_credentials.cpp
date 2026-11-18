@@ -4,103 +4,142 @@ Based on SereinGram (GPL-3.0). VeyroGram extensions are also GPL-3.0.
 */
 #include "veyrogram/vg_credentials.h"
 
+#include "serein/ports/credentials.h"
+
 #include <QtCore/QDateTime>
-#include <QtCore/QDataStream>
-#include <QtCore/QDir>
+#include <QtCore/QFile>
+#include <QtCore/QJsonDocument>
+#include <QtCore/QJsonObject>
+#include <QtCore/QRandomGenerator>
 #include <QtCore/QStandardPaths>
+#include <QtCore/QUuid>
+
+#include <cstring>
+#include <optional>
 
 namespace VeyroGram {
 namespace {
 
-constexpr quint32 kMagic = 0x56475345; // "VGSE"
-constexpr quint32 kVersion = 1;
+constexpr auto kSecretBytes = 32;
+constexpr auto kSecretHexSize = kSecretBytes * 2;
 
-// 32-byte XOR key for simple obfuscation (not crypto-secure).
-// Prevents casual reading of the session file; tokens are still
-// retrievable from process memory.
-constexpr unsigned char kXorKey[32] = {
-	0x4B, 0x2A, 0x9F, 0x13, 0xE7, 0x5C, 0x81, 0x3D,
-	0xB0, 0x67, 0x24, 0xC9, 0x52, 0x0E, 0xAA, 0x76,
-	0x1F, 0x93, 0x45, 0xD8, 0x6B, 0x20, 0xF4, 0x87,
-	0x3C, 0xA1, 0x59, 0xE2, 0x0D, 0x74, 0xC8, 0x36,
+const auto kSessionAccount = u"veyrogram/session"_q;
+const auto kInstallAccount = u"veyrogram/install"_q;
+
+struct SessionCache {
+	bool loaded = false;
+	Credentials value;
 };
 
-[[nodiscard]] QByteArray Obfuscate(const QByteArray &data) {
-	QByteArray out = data;
-	for (int i = 0; i < out.size(); ++i) {
-		out[i] = out[i] ^ static_cast<char>(kXorKey[i % 32]);
-	}
-	return out;
+[[nodiscard]] SessionCache &Cache() {
+	static auto cache = SessionCache();
+	return cache;
 }
 
-[[nodiscard]] QString SessionFilePath() {
+void RemoveLegacyFile() {
 	const auto base = QStandardPaths::writableLocation(
 		QStandardPaths::AppDataLocation);
-	return base + u"/VeyroGram/vg_session.dat"_q;
+	QFile::remove(base + u"/VeyroGram/vg_session.dat"_q);
+}
+
+[[nodiscard]] QString RandomSecretHex() {
+	auto bytes = QByteArray(kSecretBytes, '\0');
+	for (auto i = 0; i != kSecretBytes / 4; ++i) {
+		const auto value = quint32(QRandomGenerator::system()->generate());
+		std::memcpy(bytes.data() + i * 4, &value, sizeof(value));
+	}
+	return QString::fromLatin1(bytes.toHex());
 }
 
 } // namespace
 
 bool Credentials::valid() const {
-	return !accessToken.isEmpty() && !email.isEmpty();
+	return !accessToken.isEmpty();
 }
 
 bool Credentials::expired() const {
 	if (expiresAt <= 0) {
 		return false;
 	}
-	const auto now = QDateTime::currentSecsSinceEpoch();
-	return now >= expiresAt - 60; // 60-second buffer
+	return (QDateTime::currentSecsSinceEpoch() >= expiresAt - 60);
 }
 
 Credentials LoadCredentials() {
-	const auto path = SessionFilePath();
-	QFile file(path);
-	if (!file.open(QIODevice::ReadOnly)) {
-		return {};
+	auto &cache = Cache();
+	if (cache.loaded) {
+		return cache.value;
 	}
-	const auto raw = Obfuscate(file.readAll());
-	file.close();
+	cache.loaded = true;
+	RemoveLegacyFile();
 
-	QDataStream ds(raw);
-	ds.setByteOrder(QDataStream::BigEndian);
-
-	quint32 magic = 0, version = 0;
-	ds >> magic >> version;
-	if (magic != kMagic || version != kVersion) {
-		return {};
+	const auto result = Serein::Ports::SecretStore::Read(kSessionAccount);
+	if (result.error != Serein::CredentialError::None) {
+		return cache.value;
 	}
-
-	Credentials c;
-	ds >> c.email >> c.accessToken >> c.refreshToken >> c.expiresAt;
-	if (ds.status() != QDataStream::Ok) {
-		return {};
-	}
-	return c;
+	const auto object = QJsonDocument::fromJson(result.secret).object();
+	cache.value.accessToken = object[u"access"_q].toString();
+	cache.value.refreshToken = object[u"refresh"_q].toString();
+	cache.value.expiresAt = qint64(object[u"expires_at"_q].toDouble());
+	return cache.value;
 }
 
-void SaveCredentials(const Credentials &creds) {
-	QByteArray raw;
-	QDataStream ds(&raw, QIODevice::WriteOnly);
-	ds.setByteOrder(QDataStream::BigEndian);
-	ds << kMagic << kVersion;
-	ds << creds.email << creds.accessToken << creds.refreshToken << creds.expiresAt;
+bool SaveCredentials(const Credentials &creds) {
+	auto &cache = Cache();
+	cache.loaded = true;
+	cache.value = creds;
+	const auto object = QJsonObject{
+		{ u"access"_q, creds.accessToken },
+		{ u"refresh"_q, creds.refreshToken },
+		{ u"expires_at"_q, creds.expiresAt },
+	};
+	return (Serein::Ports::SecretStore::Write(
+		kSessionAccount,
+		QJsonDocument(object).toJson(QJsonDocument::Compact)
+	) == Serein::CredentialError::None);
+}
 
-	const auto path = SessionFilePath();
-	QDir().mkpath(QFileInfo(path).absolutePath());
-	QFile file(path);
-	if (file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-		file.write(Obfuscate(raw));
+bool ClearCredentials() {
+	auto &cache = Cache();
+	cache.loaded = true;
+	cache.value = Credentials();
+	return (Serein::Ports::SecretStore::Remove(kSessionAccount)
+		== Serein::CredentialError::None);
+}
+
+InstallIdentity LoadOrCreateInstallIdentity() {
+	// Cached so an unavailable secret store cannot mint an identity per call.
+	static auto identity = std::optional<InstallIdentity>();
+	if (identity) {
+		return *identity;
 	}
-}
 
-void ClearCredentials() {
-	QFile::remove(SessionFilePath());
-}
+	const auto result = Serein::Ports::SecretStore::Read(kInstallAccount);
+	if (result.error == Serein::CredentialError::None) {
+		const auto object = QJsonDocument::fromJson(result.secret).object();
+		auto stored = InstallIdentity();
+		stored.installId = object[u"id"_q].toString();
+		stored.installSecret = object[u"secret"_q].toString();
+		if (!stored.installId.isEmpty()
+			&& stored.installSecret.size() == kSecretHexSize) {
+			stored.persisted = true;
+			identity = stored;
+			return *identity;
+		}
+	}
 
-bool IsLoggedIn() {
-	const auto c = LoadCredentials();
-	return c.valid() && !c.expired();
+	auto created = InstallIdentity();
+	created.installId = QUuid::createUuid().toString(QUuid::WithoutBraces);
+	created.installSecret = RandomSecretHex();
+	const auto object = QJsonObject{
+		{ u"id"_q, created.installId },
+		{ u"secret"_q, created.installSecret },
+	};
+	created.persisted = (Serein::Ports::SecretStore::Write(
+		kInstallAccount,
+		QJsonDocument(object).toJson(QJsonDocument::Compact)
+	) == Serein::CredentialError::None);
+	identity = created;
+	return *identity;
 }
 
 } // namespace VeyroGram

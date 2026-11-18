@@ -30,6 +30,7 @@
 #include "serein/network/vpn_proxy.h"
 #include "serein/services/auto_transcription.h"
 #include "serein/settings/lock.h"
+#include "veyrogram/vg_session.h"
 
 #include <array>
 
@@ -54,6 +55,7 @@ constexpr auto kModules = std::array{
 	Module{ "chats.sorting", nullptr, Chats::WatchSorting },
 	Module{ "app.shortcuts", StartShortcuts },
 	Module{ "app.message_menu", RegisterMessageMenu },
+	Module{ "veyrogram.session", VeyroGram::StartSession },
 	Module{ "app.inspector", RegisterInspector },
 	Module{ "privacy.hidden", nullptr, Privacy::WatchHiddenChats },
 	Module{ "privacy.auto_demo", Privacy::StartAutoDemoMode },

@@ -45,9 +45,4 @@ QNetworkReply *ApiStream(
 	Fn<void(QString chunk)> onChunk,
 	Fn<void(QString error)> onDone);
 
-// Get a valid access token, refreshing automatically if expired.
-// Calls done(token) on success; done("") if not logged in or refresh fails
-// (credentials are cleared on refresh failure so the user must re-login).
-void WithToken(Fn<void(QString token)> done);
-
 } // namespace VeyroGram

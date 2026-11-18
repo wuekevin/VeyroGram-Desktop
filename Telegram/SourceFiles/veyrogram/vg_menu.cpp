@@ -26,7 +26,7 @@ void RegisterTranslateMenuAction() {
 		const auto controller = ctx.controller;
 		const auto action = Ui::Menu::CreateAction(
 			ctx.menu,
-			u"AI Translate"_q,
+			u"AI 翻译"_q,
 			crl::guard(controller, [show = controller->uiShow(), text] {
 				ShowTranslateBox(show, text);
 			}));
