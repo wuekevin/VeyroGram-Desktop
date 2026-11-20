@@ -1,0 +1,33 @@
+{
+  "name": "veyrogram-packaged-experimental",
+  "version-string": "7.4.1",
+  "dependencies": [
+    "ada-url",
+    "boost-regex",
+    "libjpeg-turbo",
+    "minizip",
+    "zlib",
+    "lz4",
+    "openssl",
+    "opus",
+    "protobuf",
+    "tl-expected",
+    "openal-soft",
+    "xxhash",
+    {
+      "name": "pkgconf",
+      "host": true
+    },
+    {
+      "name": "ffmpeg",
+      "default-features": false,
+      "features": [
+        "avcodec",
+        "avfilter",
+        "avformat",
+        "swresample",
+        "swscale"
+      ]
+    }
+  ]
+}
